@@ -5,50 +5,26 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/baseline_language_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="#1976D2" />
+        <!-- Other views and widgets in your layout -->
 
-        <TextView
-            android:id="@+id/languageTextView"
-            android:layout_width="150dp"
-            android:layout_height="35dp"
-            android:clickable="true"
-            android:padding="8dp"
-            android:text="Language"
-            android:textColor="#1976D2"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-
-            app:layout_constraintTop_toTopOf="parent"
-            android:focusable="true" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonlog"
-            android:layout_width="312dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="19dp"
-            android:text="Login"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/nav_graph"
+             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/Nav_Host_Frag"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph" />
-
 </layout>
+
+
+
