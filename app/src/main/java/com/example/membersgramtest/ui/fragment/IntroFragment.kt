@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.membersgramtest.R
 import com.example.membersgramtest.adaptor.PagerAdaptor
 import com.example.membersgramtest.ui.layout.IntroLayout
@@ -51,11 +52,12 @@ class IntroFragment : Fragment() {
         introLayout.viewPager.adapter = pagerAdapter
 
         // Set up the DotsIndicator
-        introLayout.dotsIndicator.setViewPager2(introLayout.viewPager)
+      introLayout.circleIndicator.setViewPager(introLayout.viewPager)
 
-        // Set the click listener for the login button
+
         introLayout.loginButton.setOnClickListener {
-            // Perform the desired action when the login button is clicked
+            findNavController().navigate(R.id.action_introFragment_to_privicyFragment)
         }
+
     }
 }

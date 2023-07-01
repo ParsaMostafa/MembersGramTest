@@ -2,6 +2,9 @@ package com.example.membersgramtest.utillity
 
 
 import android.content.res.Resources
+import android.util.TypedValue
+import android.widget.TextView
+import androidx.annotation.AttrRes
 
 object Metrics {
 
@@ -19,4 +22,10 @@ object Metrics {
 
     fun dpToPx(dp: Int) = (dp * density).toInt()
 
-    fun dpToPx(dp: Float) = dp * density  }
+    fun dpToPx(dp: Float) = dp * density
+
+    fun TextView.setSize(sp: Int) = setTextSize(TypedValue.COMPLEX_UNIT_SP, sp.toFloat())
+
+
+
+}

@@ -7,5 +7,21 @@
     <fragment
         android:id="@+id/introFragment"
         android:name="com.example.membersgramtest.ui.fragment.IntroFragment"
-        android:label="IntroFragment" />
+        android:label="IntroFragment" >
+        <action
+            android:id="@+id/action_introFragment_to_privicyFragment"
+            app:destination="@id/privicyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/privicyFragment"
+        android:name="com.example.membersgramtest.ui.fragment.privicyFragment"
+        android:label="privicyFragment" >
+        <action
+            android:id="@+id/action_privicyFragment_to_joinBotFragment"
+            app:destination="@id/joinBotFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/joinBotFragment"
+        android:name="com.example.membersgramtest.ui.fragment.JoinBotFragment"
+        android:label="JoinBotFragment" />
 </navigation>
