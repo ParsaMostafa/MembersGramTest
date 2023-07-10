@@ -23,5 +23,24 @@
     <fragment
         android:id="@+id/joinBotFragment"
         android:name="com.example.membersgramtest.ui.fragment.JoinBotFragment"
-        android:label="JoinBotFragment" />
+        android:label="JoinBotFragment" >
+
+        <action
+            android:id="@+id/action_joinBotFragment_to_verifyFragment6"
+            app:destination="@id/verifyFragment6" />
+    </fragment>
+    <fragment
+        android:id="@+id/verifyFragment6"
+        android:name="com.example.membersgramtest.ui.fragment.VerifyFragment"
+        android:label="VerifyFragment" >
+        <action
+            android:id="@+id/action_verifyFragment6_to_sendSmsFragment"
+            app:destination="@id/sendSmsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendSmsFragment"
+        android:name="com.example.membersgramtest.ui.fragment.SendSmsFragment"
+        android:label="SendSmsFragment" />
+
+
 </navigation>

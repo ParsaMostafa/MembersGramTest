@@ -7,6 +7,15 @@
 
     </style>
 
+    <style name="OutlinedBoxStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <!-- Add any additional styling here -->
+    </style>
+    <style name="TextInputLayoutOutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <!-- You can add custom styling here if needed -->
+    </style>
+
+
+
 
 
 </resources>

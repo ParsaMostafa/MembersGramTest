@@ -11,8 +11,8 @@ import com.example.membersgramtest.ui.layout.IntroLayout
 import com.example.membersgramtest.utillity.MyData
 
 class IntroFragment : Fragment() {
-    private lateinit var introLayout: IntroLayout
-    private lateinit var pagerAdapter: PagerAdaptor
+     lateinit var introLayout: IntroLayout
+     lateinit var pagerAdapter: PagerAdaptor
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +30,7 @@ class IntroFragment : Fragment() {
         val dataList = listOf(
             MyData(
                 "Increase member",
-                "Order as many members as you want for your channels and groups",
+                "Order as many members as you want for your  channels and groups",
                 R.drawable.ic_intro_page_one
             ),
             MyData(
