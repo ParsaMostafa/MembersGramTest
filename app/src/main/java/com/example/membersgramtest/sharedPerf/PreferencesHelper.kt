@@ -18,12 +18,13 @@ object PreferencesHelper {
     var phoneNumber: String?
         get() = preferences.getString("phoneNumber", null)
         set(value) {
-            preferences.edit().putString("phoneNumber", value).apply()
+            editor.putString("phoneNumber", value).apply()
         }
 
     var apiToken: String?
         get() = preferences.getString("apiToken", null)
         set(value) {
-            preferences.edit().putString("apiToken", value).apply()
+            editor.putString("apiToken", value).apply()
         }
+
 }

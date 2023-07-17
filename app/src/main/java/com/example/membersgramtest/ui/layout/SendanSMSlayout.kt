@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.view.ContextThemeWrapper
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.example.membersgramtest.R
 import com.example.membersgramtest.utillity.Measure
@@ -52,6 +53,8 @@ class SendanSMSlayout (context: Context, attrs: AttributeSet? = null, defStyleAt
 
         phoneNumEditText.hint = "Enter Code"
         phoneNumInputLayout.boxBackgroundMode = TextInputLayout.BOX_BACKGROUND_OUTLINE
+        val color = ContextCompat.getColor(context, R.color.white)
+        phoneNumInputLayout.setBoxBackgroundColor(color)
 
 
         phoneNumInputLayout.addView(phoneNumEditText,

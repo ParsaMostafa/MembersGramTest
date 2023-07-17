@@ -14,9 +14,7 @@ import com.example.membersgramtest.R
 import com.example.membersgramtest.models.v1.MyResponse
 import com.example.membersgramtest.sharedPerf.PreferencesHelper
 import com.example.membersgramtest.ui.layout.VerifyPage
-import com.example.membersgramtest.utillity.Consts
 import com.example.membersgramtest.viewmodel.VeryfiViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class VerifyFragment : Fragment() {
@@ -29,53 +27,56 @@ class VerifyFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-       verifyPage = VerifyPage(requireContext())
+        verifyPage = VerifyPage(requireContext())
         return verifyPage
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
-
         verifyPage.setFabAction {
             val phoneNumber = verifyPage.phoneNumEditText.text.toString()
+
+            if(phoneNumber.isEmpty()) {
+                verifyPage.phoneNumInputLayout.setError("Phone number cannot be empty")
+                return@setFabAction
+            }
+
+            if(!isValidPhoneNumber(phoneNumber)) {
+                verifyPage.phoneNumInputLayout.setError("Invalid phone number format")
+                return@setFabAction
+            }
+
             PreferencesHelper.phoneNumber = phoneNumber
             sendApiRequest(phoneNumber)
             findNavController().navigate(R.id.action_verifyFragment6_to_sendSmsFragment)
         }
-
-
-
     }
 
-    private fun sendApiRequest(phoneNumber: String,
-                               market: String = "zarinpal" ,
-                               tg_id: Int = Consts.TG_ID) {
+    private fun isValidPhoneNumber(phoneNumber: String): Boolean {
+        // Phone number should be 12 digits and start with 98
+        val regex = "^98\\d{10}$".toRegex()
+
+        return phoneNumber.matches(regex)
+    }
+
+
+    private fun sendApiRequest(phoneNumber: String) {
+        val market = "zarinpal"
+        val tg_id = 745989997
 
         lifecycleScope.launch {
-            viewModel.PhoneNumberv1(phoneNumber,
-                market ,
-            tg_id)
-
+            viewModel.PhoneNumberv1(phoneNumber, market, tg_id)
                 .collect {response ->
                     if (response.isSuccessful){
-                        val myResponse:MyResponse? = response.body()
-                        Log.d("API Response", "Success: $myResponse")
+                        val myResponse: MyResponse? = response.body()
+                        Log.d("API V1", "Success: $myResponse")
                     }  else
                     {
                         val errorBody = response.errorBody()?.string()
-                        Log.d("myResponse", "Error: $errorBody")
+                        Log.d("API V1", "Error: $errorBody")
                     }
-
-
                 }
         }
-
-
-
     }
-
-
 }

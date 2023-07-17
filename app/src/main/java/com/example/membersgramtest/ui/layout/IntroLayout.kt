@@ -11,6 +11,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.membersgramtest.R
 import com.example.membersgramtest.utillity.Metrics
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.shape.CornerFamily
 import me.relex.circleindicator.CircleIndicator3
 
 class IntroLayout   (
@@ -38,16 +39,26 @@ class IntroLayout   (
 
         languageTextView = TextView(context)
         languageTextView.text = "Language"
+
         languageTextView.setTextColor(Color.parseColor("#1976D2"))
         languageTextView.typeface = ResourcesCompat.getFont(context, R.font.product_sans_regular)
         addView(languageTextView)
 
         loginButton = MaterialButton(context)
         loginButton.text = "Log in"
+        loginButton.isAllCaps = false
+
         loginButton.textSize = 16f
         loginButton.typeface = ResourcesCompat.getFont(context, R.font.producsansmedium)
         loginButton.insetTop = 0
         loginButton.insetBottom = 0
+        val radius = 60 // specify the radius in pixels
+        val shapeAppearanceModel = loginButton.shapeAppearanceModel
+            .toBuilder()
+            .setAllCorners(CornerFamily.ROUNDED, radius.toFloat())
+            .build()
+        loginButton.shapeAppearanceModel = shapeAppearanceModel
+
         addView(loginButton)
 
         circleIndicator = CircleIndicator3(context)

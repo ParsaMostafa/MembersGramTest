@@ -13,6 +13,7 @@ import androidx.core.content.res.ResourcesCompat
 import com.example.membersgramtest.R
 import com.example.membersgramtest.utillity.Metrics
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.shape.CornerFamily
 
 class JoinBot(
     context: Context,
@@ -60,12 +61,19 @@ class JoinBot(
         button = MaterialButton(context)
         button.text = "Join and get started "
         button.textSize = 16f
+        button.isAllCaps = false
         button.setBackgroundColor(Color.parseColor("#1976D2")) // Set button background color
         button.setTextColor(Color.WHITE) // Set button text color
         button.setPadding(0,0,0,0)
         button.insetTop = 0
         button.insetBottom = 0
         button.typeface = ResourcesCompat.getFont(context, R.font.producsansmedium)
+        val radius = 60 // specify the radius in pixels
+        val shapeAppearanceModel = button.shapeAppearanceModel
+            .toBuilder()
+            .setAllCorners(CornerFamily.ROUNDED, radius.toFloat())
+            .build()
+        button.shapeAppearanceModel = shapeAppearanceModel
         addView(button)
 
 

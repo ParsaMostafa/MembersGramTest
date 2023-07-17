@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/introFragment">
 
@@ -24,7 +24,6 @@
         android:id="@+id/joinBotFragment"
         android:name="com.example.membersgramtest.ui.fragment.JoinBotFragment"
         android:label="JoinBotFragment" >
-
         <action
             android:id="@+id/action_joinBotFragment_to_verifyFragment6"
             app:destination="@id/verifyFragment6" />
@@ -40,7 +39,39 @@
     <fragment
         android:id="@+id/sendSmsFragment"
         android:name="com.example.membersgramtest.ui.fragment.SendSmsFragment"
-        android:label="SendSmsFragment" />
+        android:label="SendSmsFragment" >
+        <action
+            android:id="@+id/action_sendSmsFragment_to_fragmentStore"
+            app:destination="@id/fragmentStore" />
 
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentStore"
+        android:name="com.example.membersgramtest.ui.fragment.FragmentStore"
+        android:label="FragmentStore" >
+        <action
+            android:id="@+id/action_fragmentStore_to_fragCoinDetails3"
+            app:destination="@id/fragCoinDetails3" />
+        <action
+            android:id="@+id/action_fragmentStore_to_fragMeberDetails2"
+            app:destination="@id/fragMeberDetails2" />
+
+        <action
+            android:id="@+id/action_fragmentStore_to_fragViewPagerTab3"
+            app:destination="@id/fragViewPagerTab3" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragCoinDetails3"
+        android:name="com.example.membersgramtest.ui.fragment.FragCoinDetails"
+        android:label="FragCoinDetails" />
+    <fragment
+        android:id="@+id/fragMeberDetails2"
+        android:name="com.example.membersgramtest.ui.fragment.FragMeberDetails"
+        android:label="FragMeberDetails" />
+    <fragment
+        android:id="@+id/fragViewPagerTab3"
+        android:name="com.example.membersgramtest.ui.fragment.FragViewPagerTab"
+        android:label="FragViewPagerTab" />
 
 </navigation>

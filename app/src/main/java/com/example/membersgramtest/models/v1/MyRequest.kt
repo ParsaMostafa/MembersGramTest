@@ -6,8 +6,8 @@ data class MyRequest(
     val data: RequestData
 ) {
     data class RequestData(
-        val phoneNumber: String,
-        val market: String = "zarinpal" ,
-        val tg_id: Int = TG_ID
+        val phonenumber: String,
+        val market: String  ,
+        val tg_id: Int
     )
 }

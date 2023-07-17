@@ -24,11 +24,11 @@ class VeryfiViewModel() : ViewModel() {
 
 
 
-    fun PhoneNumberv1( phoneNumber: String,
-                        market: String = "zarinpal" ,
-                        tg_id: Int = Consts.TG_ID
+    fun PhoneNumberv1( phonenumber: String,
+                        market: String  ,
+                        tg_id: Int
     ): Flow<Response<MyResponse>> = flow {
-        val request = MyRequest(MyRequest.RequestData(phoneNumber,market,tg_id))
+        val request = MyRequest(MyRequest.RequestData(phonenumber,market,tg_id))
         val response = newsApi.register(request)
         emit(response)
     }.flowOn(Dispatchers.IO)

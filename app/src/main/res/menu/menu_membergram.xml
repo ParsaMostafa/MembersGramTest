@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragViewPagerTab3"
+        android:icon="@drawable/add_circle_black_24dp__1_"
+        android:title="Order"/>
+
+    <item
+        android:id="@+id/fragCoinDetails3"
+        android:icon="@drawable/ic_get_coin_bottom_navigation_disable__1_"
+        android:title="Coin"/>
+
+    <item
+        android:id="@+id/fragMeberDetails2"
+        android:icon="@drawable/path_8828"
+        android:title="My Members"/>
+</menu>

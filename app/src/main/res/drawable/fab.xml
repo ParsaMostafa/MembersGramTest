@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/blueindt"/>  <!-- replace with your desired blue color -->
+
+    <!-- optional: add dimension if you want specific size -->
+    <size android:width="60dp"
+        android:height="60dp"/>
+
+    <corners android:radius="30dp"/>  <!-- half of size for a perfect circle -->
+</shape>

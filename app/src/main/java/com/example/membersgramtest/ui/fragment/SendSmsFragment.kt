@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.membersgramtest.R
 import com.example.membersgramtest.models.v2.VerifyRegisterResponse
 import com.example.membersgramtest.sharedPerf.PreferencesHelper
 import com.example.membersgramtest.ui.layout.SendanSMSlayout
@@ -50,6 +52,8 @@ class SendSmsFragment : Fragment() {
                 if (verificationCode.length == 5) {
                     // Call the API request function
                     sendApiRequest(phoneNumber, verificationCode)
+
+                    findNavController().navigate(R.id.action_sendSmsFragment_to_fragmentStore)
                 }
             }
         })

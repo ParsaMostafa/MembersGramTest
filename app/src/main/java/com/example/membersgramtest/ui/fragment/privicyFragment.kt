@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.membersgramtest.R
-import com.example.membersgramtest.ui.layout.IntroLayout
 import com.example.membersgramtest.ui.layout.PrivacyPolicy
 
 class privicyFragment : Fragment() {
