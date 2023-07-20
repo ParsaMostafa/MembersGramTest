@@ -27,4 +27,10 @@ object PreferencesHelper {
             editor.putString("apiToken", value).apply()
         }
 
+    var isLoggedIn: Boolean
+        get() = preferences.getBoolean("isLoggedIn", false)
+        set(value) {
+            editor.putBoolean("isLoggedIn", value).apply()
+        }
+
 }

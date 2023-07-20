@@ -1,17 +1,10 @@
 package com.example.membersgramtest.ui.layout
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Typeface
 import android.util.AttributeSet
-import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.membersgramtest.R
-import com.example.membersgramtest.utillity.Metrics
 
 class FragStorelayout(
     context: Context,

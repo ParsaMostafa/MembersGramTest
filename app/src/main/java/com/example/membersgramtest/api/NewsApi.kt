@@ -7,7 +7,6 @@ import com.example.membersgramtest.models.v2.VerifyRegisterRequest
 import com.example.membersgramtest.models.v2.VerifyRegisterResponse
 import retrofit2.Response
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
 
@@ -23,6 +22,6 @@ interface NewsApi {
     suspend fun verifyRegister(@Body request: VerifyRegisterRequest): Response<VerifyRegisterResponse>
 
     @Headers("lan: EN", "versionc: 30180", "market: zarinpal")
-    @GET("api/v2_2/getmembers")
+    @POST("api/v2_2/getmembers")
     suspend fun getMembers(): Response<ApiResponse>
 }

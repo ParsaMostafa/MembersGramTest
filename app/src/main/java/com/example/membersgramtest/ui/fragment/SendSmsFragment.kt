@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -38,6 +39,7 @@ class SendSmsFragment : Fragment() {
 
         val preferencesHelper = PreferencesHelper
 
+
         val phoneNumber = preferencesHelper.phoneNumber
 
 
@@ -53,7 +55,7 @@ class SendSmsFragment : Fragment() {
                     // Call the API request function
                     sendApiRequest(phoneNumber, verificationCode)
 
-                    findNavController().navigate(R.id.action_sendSmsFragment_to_fragmentStore)
+
                 }
             }
         })
@@ -62,21 +64,44 @@ class SendSmsFragment : Fragment() {
 
 
     private fun sendApiRequest(phoneNumber: String?, verificationCode: String) {
-        // Call the verifyPhoneNumber function in the ViewModel to make the API request
         lifecycleScope.launch {
             viewModel.verifyPhoneNumber(phoneNumber ?: "", verificationCode.toInt()).collect { response ->
                 if (response.isSuccessful) {
-                    // Handle successful response
                     val verifyRegisterResponse: VerifyRegisterResponse? = response.body()
                     Log.d("API Response", "Success: $verifyRegisterResponse")
+
+                    // Save token into shared preferences
+                    val token = verifyRegisterResponse?.data?.data?.token
+                    PreferencesHelper.apiToken = token
+                    PreferencesHelper.isLoggedIn = true
+
+                    // Log the saved token
+                    Log.d("SavedToken", "Token: ${PreferencesHelper.apiToken ?: "null"}")
+
+                    if (token != null) {
+                        // Navigate to the store fragment only after the token is saved
+                        findNavController().navigate(R.id.action_sendSmsFragment_to_fragmentStore)
+                    } else {
+                        // Show alert dialog if token is null
+                        activity?.runOnUiThread {
+                            AlertDialog.Builder(requireContext())
+                                .setTitle("Error")
+                                .setMessage("Token not received. Please try again.")
+                                .setPositiveButton("OK", null)
+                                .show()
+                        }
+                    }
                 } else {
-                    // Handle unsuccessful response
                     val errorBody = response.errorBody()?.string()
                     Log.d("API Response", "Error: $errorBody")
                 }
             }
         }
     }
+
+
+
+
 
 
 }

@@ -1,5 +1,6 @@
 package com.example.membersgramtest.api
 
+import android.util.Log
 import com.example.membersgramtest.sharedPerf.PreferencesHelper
 import com.example.membersgramtest.utillity.CryptUtil
 import okhttp3.Interceptor
@@ -14,8 +15,10 @@ class ApiInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val requestBuilder = chain.request().newBuilder()
         val apiToken = PreferencesHelper.apiToken
+        Log.d("API T", "token is : $apiToken")
 
         if (apiToken != null) {
+
             requestBuilder.addHeader("apitoken", apiToken)
         }
 
@@ -25,7 +28,12 @@ class ApiInterceptor : Interceptor {
         requestBuilder.addHeader("versionName", "9.4.6")
         requestBuilder.addHeader("packageName", "gram.members.android")
 
+
         var request = requestBuilder.build()
+        // Log all the headers
+        for (name in request.headers().names()) {
+            Log.d("APIInterceptor", "Header: $name = ${request.header(name)}")
+        }
 
         val oldBody = request.body()
         val buffer = Buffer().apply { oldBody?.writeTo(this) }
