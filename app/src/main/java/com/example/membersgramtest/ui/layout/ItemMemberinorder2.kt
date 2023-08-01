@@ -11,9 +11,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.example.membersgramtest.R
+import com.example.membersgramtest.ui.fragment.MyBottomSheetDialogFragment
 import com.example.membersgramtest.utillity.Measure
 import com.example.membersgramtest.utillity.Metrics
 import com.example.membersgramtest.utillity.Metrics.setSize
@@ -26,28 +28,22 @@ class ItemMemberinorder2(
     defStyleAttr: Int = 0
 ) : ViewGroup(context, attrs, defStyleAttr) {
 
-        val imageView:ImageView
-        val textView:TextView
-        val imageview2 : ImageView
-        val button:MaterialButton
-        val customView: TextView
-        val textview1 : TextView
-        val textview2 : TextView
-        val text : TextView
-        val discounttext : TextView
-        val whtitebuttun : MaterialButton
-        val custom2 : TextView
-        val custom3 : TextView
-
-
-
-
+      val imageView: ImageView
+     val textView: TextView
+      val imageview2 : ImageView
+     val button: MaterialButton
+      val customView: TextView
+      val textview1: TextView
+     val textview2: TextView
+   val text: TextView
+     val discounttext: TextView
+     val whtitebuttun: MaterialButton
+      val custom2: TextView
+      val custom3: TextView
 
     init {
-
         imageView = ImageView(context)
         imageView.setImageResource(R.drawable.order)
-
         addView(imageView)
 
         textView = TextView(context)
@@ -56,20 +52,14 @@ class ItemMemberinorder2(
         textView.typeface = ResourcesCompat.getFont(context, R.font.product_sans_regular)
         addView(textView)
 
-
-
         imageview2 = ImageView(context)
         imageview2.setImageResource(R.drawable.ic_fire_box)
         addView(imageview2)
 
-
-
         button = MaterialButton(context)
         button.text = "9,900 $"
         button.isAllCaps = false
-
         button.setSize(14)
-
         button.typeface = ResourcesCompat.getFont(context, R.font.producsansmedium)
         button.insetTop = 0
         button.insetBottom = 0
@@ -80,54 +70,37 @@ class ItemMemberinorder2(
             .build()
         button.shapeAppearanceModel = shapeAppearanceModel
 
-        addView(button)
 
-
-        // Initialize the customView as a TextView instead of ImageView
         customView = TextView(context)
         customView.background = ContextCompat.getDrawable(context, R.drawable.shape)
-        // Set the text for customView
         customView.text = "25%"
-        // You can also style the text as needed, here is an example:
         customView.setTextColor(Color.parseColor("#C62828"))
         customView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
         customView.typeface = ResourcesCompat.getFont(context, R.font.product_sans_regular)
         customView.gravity = Gravity.CENTER
         addView(customView)
 
-        //
         textview1 = TextView(context)
-
         textview1.text = "10,900 $"
-        // You can also style the text as needed, here is an example:
         textview1.setTextColor(Color.parseColor("#616161"))
         textview1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
         textview1.typeface = ResourcesCompat.getFont(context, R.font.product_sans_regular)
-
         addView(textview1)
 
-
-        //
         textview2 = TextView(context)
-
         textview2.text = "Best offer"
-        // You can also style the text as needed, here is an example:
         textview2.setTextColor(Color.parseColor("#616161"))
         textview2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
         textview2.typeface = ResourcesCompat.getFont(context, R.font.product_sans_regular)
-
         addView(textview2)
 
-        //
         text = TextView(context)
         text.text = "50"
         text.setTextColor(Color.parseColor("#212121"))
         text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
-
         text.typeface = ResourcesCompat.getFont(context, R.font.product_sans_regular)
         addView(text)
 
-        //
         discounttext = TextView(context)
         discounttext.text = "20"
         discounttext.setTextColor(Color.parseColor("#757575"))
@@ -136,7 +109,6 @@ class ItemMemberinorder2(
         discounttext.typeface = ResourcesCompat.getFont(context, R.font.product_sans_regular)
         addView(discounttext)
 
-        //
         whtitebuttun = MaterialButton(context)
         whtitebuttun.text = "900 $"
         whtitebuttun.isAllCaps = false
@@ -144,10 +116,7 @@ class ItemMemberinorder2(
         whtitebuttun.backgroundTintList = ColorStateList.valueOf(color)
         val textColor = Color.parseColor("#1565C0")
         whtitebuttun.setTextColor(textColor)
-
-
         whtitebuttun.setSize(14)
-
         whtitebuttun.typeface = ResourcesCompat.getFont(context, R.font.producsansmedium)
         whtitebuttun.insetTop = 0
         whtitebuttun.insetBottom = 0
@@ -157,24 +126,17 @@ class ItemMemberinorder2(
             .setAllCorners(CornerFamily.ROUNDED, radius.toFloat())
             .build()
         whtitebuttun.shapeAppearanceModel = shapeAppearanceModel
-
         addView(whtitebuttun)
 
-
-        custom2  = TextView(context)
+        custom2 = TextView(context)
         custom2.background = ContextCompat.getDrawable(context, R.drawable.shape)
-        // Set the text for customView
         custom2.text = "25%"
-        // You can also style the text as needed, here is an example:
         custom2.setTextColor(Color.parseColor("#C62828"))
         custom2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
         custom2.typeface = ResourcesCompat.getFont(context, R.font.product_sans_regular)
         custom2.gravity = Gravity.CENTER
         addView(custom2)
 
-
-
-        //custom3
         custom3 = TextView(context)
         custom3.background = ContextCompat.getDrawable(context, R.drawable.shape1)
         custom3.text = "x2"
@@ -182,28 +144,14 @@ class ItemMemberinorder2(
         custom3.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10f)
         custom3.typeface = ResourcesCompat.getFont(context, R.font.product_sans_regular)
         custom3.gravity = Gravity.CENTER
-
-       addView(custom3)
-
+        addView(custom3)
 
 
 
-
-
-
-
-
-
-
-
-        // Set visibility of all items to INVISIBLE except imageView
-
-        imageview2.visibility = View.INVISIBLE
-        button.visibility = View.INVISIBLE
-        customView.visibility = View.INVISIBLE
-        textview1.visibility = View.INVISIBLE
-        textview2.visibility = View.INVISIBLE
-        textView.visibility = View.INVISIBLE
+        whtitebuttun.setOnClickListener {
+            val bottomSheetFragment = MyBottomSheetDialogFragment()
+            bottomSheetFragment.show((context as AppCompatActivity).supportFragmentManager, bottomSheetFragment.tag)
+        }
 
     }
 
@@ -225,7 +173,7 @@ class ItemMemberinorder2(
         val rr = ll + textView.measuredWidth
         val bb = tt + textView.measuredHeight
         textView.layout(ll, tt, rr, bb)
-        textView.visibility = View.INVISIBLE
+
         //imageview2
         val lll = rr+Metrics.dpToPx(7)
         val ttt =  Metrics.dpToPx(28)

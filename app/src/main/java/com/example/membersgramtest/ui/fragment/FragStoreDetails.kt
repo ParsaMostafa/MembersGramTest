@@ -11,12 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.membersgramtest.adaptor.StoreAdaptor
 import com.example.membersgramtest.ui.layout.FragStorelayout
 import com.example.membersgramtest.viewmodel.VeryfiViewModel
+import com.example.membersgramtest.viewmodel.ViewModelMember
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class FragStoreDetails: Fragment() {
 
     private lateinit var fragStoreLayout: FragStorelayout
-    private val viewModel: VeryfiViewModel by viewModels()
+    private val viewModel: ViewModelMember by viewModels()
     private var adapter = StoreAdaptor()
 
     override fun onCreateView(
@@ -30,20 +32,19 @@ class FragStoreDetails: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupRecyclerView()
-        // Here, make the API call
-        viewModel.getApiResponseFlow()
+
         observeApiResponse()
     }
 
     private fun observeApiResponse() {
-        lifecycleScope.launch {
-            viewModel.listflow.collect { data ->
-                adapter.submitList(data)
+        lifecycleScope.launchWhenStarted {
+            viewModel.memberBundles.collect { memberBundles ->
+                adapter.submitList(memberBundles)
             }
         }
     }
+
 
     private fun setupRecyclerView() {
         fragStoreLayout.recyclerView.apply {

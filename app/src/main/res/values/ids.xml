@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="action_joinBotFragment_to_verifyFragment" type="id" />
+    <item name="textView1" type="id" />
+    <item name="textView2" type="id" />
+    <item name="imageView1" type="id" />
+    <item name="iv" type="id" />
+
 </resources>

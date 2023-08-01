@@ -18,7 +18,7 @@ sealed class RvItemTypes {
         @SerializedName("discount_member_count") val discount_member_count: Int,
         @SerializedName("price") val price: Float,
         @SerializedName("discount") val discount: Int,
-        @SerializedName("sku") val sku: String,
+        @SerializedName("sku") val sku: String?,
         @SerializedName("type") val type: String,
         @SerializedName("image") val image: String,
         val image_l_fa: String?,

@@ -5,6 +5,8 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.membersgramtest.utillity.Measure
+import com.example.membersgramtest.utillity.Metrics
 
 class FragStorelayout(
     context: Context,
@@ -33,30 +35,28 @@ class FragStorelayout(
         val parentWidth = r - l
         val parentHeight = b - t
 
-        //RecyclerView
+        // RecyclerView
         val tleft = l
         val ttop = t
-        val tright = r
-        val tbottom = b
+        val tright = l + parentWidth
+        val tbottom = t + parentHeight
         recyclerView.layout(tleft, ttop, tright, tbottom)
-
-
-
     }
+
 
 
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         val width = View.MeasureSpec.getSize(widthMeasureSpec)
         val height = View.MeasureSpec.getSize(heightMeasureSpec)
 
+        // Create a measure specification for the RecyclerView's height that allows it to be as big as it wants, up to the specified size.
+        val heightSpec = View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.AT_MOST)
 
+        recyclerView.measure(widthMeasureSpec, heightSpec)
 
-        recyclerView.measure(
-            View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),
-            View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY)
-        )
-
+        // Let's measure the ViewGroup to be as big as it's allowed.
+        setMeasuredDimension(widthMeasureSpec, heightMeasureSpec)
     }
+
 }

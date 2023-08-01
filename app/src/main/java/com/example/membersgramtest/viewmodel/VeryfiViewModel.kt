@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.membersgramtest.api.RetrofitInstance
+import com.example.membersgramtest.models.member.MemberBundle
 import com.example.membersgramtest.models.member.RvItemTypes
 import com.example.membersgramtest.models.v1.MyRequest
 import com.example.membersgramtest.models.v1.MyResponse
@@ -36,55 +37,6 @@ class VeryfiViewModel() : ViewModel() {
     }.flowOn(Dispatchers.IO)
 
 
-    //ResponseApiCall
-    val listflow  = MutableStateFlow<List<RvItemTypes>>(emptyList())
 
-    init {
-        getApiResponseFlow()
-    }
 
-    fun getApiResponseFlow() {
-        viewModelScope.launch {
-            val response = newsApi.getMembers()
-            Log.d("VeryfiViewModel", "API response: $response")
-            if (response.isSuccessful) {
-                val apiresponedata = response.body()?.data?.data
-                Log.d("VeryfiViewModel", "API response data: $apiresponedata") // Added logging here
-                val list = mutableListOf<RvItemTypes>()
-                list.add(RvItemTypes.HeaderModel)
-                apiresponedata?.forEach {
-                    list.add(
-                        RvItemTypes.Apiresponse(
-                            Id = it.Id ,
-                            by_coin = it.by_coin,
-                            coin = it.coin,
-                            onvan = it.onvan,
-                            discountString = it.discountString,
-                            market = it.market,
-                            member_count = it.member_count,
-                            discount_member_count = it.discount_member_count,
-                            price = it.price,
-                            discount = it.discount,
-                            sku = it.sku,
-                            type = it.image,
-                            image = it.image,
-                            image_l_fa = it.image_l_fa,
-                            image_d_fa = it.image_d_fa,
-                            image_l_en = it.image_l_en,
-                            image_d_en = it.image_d_en,
-                            animationMode = it.animationMode,
-                            isHidden = it.isHidden,
-                            daily = it.daily ,
-                            dayCount = it.dayCount
-                        )
-                    )
-                }
-                list.add(RvItemTypes.FooterModel)
-                listflow.emit(list)
-            } else {
-                Log.e("1408", "API Error: ${response.message()}")
-                // Handle API error if needed
-            }
-        }
-    }
 }
