@@ -1,6 +1,5 @@
 package com.example.membersgramtest.ui.layout
 
-
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
@@ -19,15 +18,15 @@ class ItemMemberinorder3(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : ViewGroup(context, attrs, defStyleAttr){
-            val textView:TextView
-            val imageView:ImageView
-            val textView1 : TextView
-            val lineView: View // Added gray line view
-            val lineView1 : View
-            val imageView2:ImageView
-             val textview3 : TextView
-             val imageView3 : ImageView
-             val textview4 : TextView
+    val textView: TextView
+    val imageView: ImageView
+    val textView1 : TextView
+    val lineView: View // Added gray line view
+    val lineView1 : View
+    val imageView2:ImageView
+    val textview3 : TextView
+    val imageView3 : ImageView
+    val textview4 : TextView
     init {
         textView = TextView(context)
         textView.text = "You deserve the best:"
@@ -95,7 +94,7 @@ class ItemMemberinorder3(
         val parentHeight = b - t
 
         val l  = ( (parentWidth - textView.measuredWidth) / 2)
-        val t = Metrics.dpToPx(0)
+        val t = Metrics.dpToPx(25)
         val r = l+textView.measuredWidth
         val b = t+textView.measuredHeight
         textView.layout(l,t,r,b)
@@ -114,14 +113,14 @@ class ItemMemberinorder3(
         textView1.layout(lll,ttt,rrr,bbb)
 
 
-        val llll =  rrr + Metrics.dpToPx(47)
+        val llll =  rrr + Metrics.dpToPx(33)
         val tttt = b + Metrics.dpToPx(24)
         val rrrr = llll+ lineView.measuredWidth
         val bbbb = tttt + lineView.measuredHeight
-         lineView.layout(llll,tttt,rrrr,bbbb)
+        lineView.layout(llll,tttt,rrrr,bbbb)
 
 
-        val llllr =  l - Metrics.dpToPx(47)
+        val llllr =   Metrics.dpToPx(142)
         val ttttr = b + Metrics.dpToPx(24)
         val rrrrr = llllr+ lineView1.measuredWidth
         val bbbbr = ttttr + lineView1.measuredHeight
@@ -129,22 +128,22 @@ class ItemMemberinorder3(
 
 
         // imagview2
-        val left =  Metrics.dpToPx(48)
+        val left =  Metrics.dpToPx(58)
         val top = b + Metrics.dpToPx(33)
         val right = left + imageView2.measuredWidth
         val botoom = top + imageView2.measuredHeight
         imageView2.layout(left,top,right,botoom)
 
         //textview3
-          val le =   Metrics.dpToPx(34)
-          val to =  botoom + Metrics.dpToPx(8)
-          val ri = le + textview3.measuredWidth
-          val bo = to + textview3.measuredHeight
-          textview3.layout(le,to,ri,bo)
+        val le =   Metrics.dpToPx(34)
+        val to =  botoom + Metrics.dpToPx(8)
+        val ri = le + textview3.measuredWidth
+        val bo = to + textview3.measuredHeight
+        textview3.layout(le,to,ri,bo)
 
 
         //imageview 3
-        val right1 = parentWidth- Metrics.dpToPx(48)
+        val right1 = parentWidth- Metrics.dpToPx(65)
         val top1 = b + Metrics.dpToPx(33)
         val left1 = right1 - imageView3.measuredWidth
         val botoom1 = top1 + imageView3.measuredHeight
@@ -154,7 +153,7 @@ class ItemMemberinorder3(
 
         // textview4
         val rii =   parentWidth - Metrics.dpToPx(34)
-        val too =  botoom1 + Metrics.dpToPx(8)
+        val too =  botoom1 + Metrics.dpToPx(6)
         val lee = rii - textview4.measuredWidth
         val boo = too + textview4.measuredHeight
         textview4.layout(lee,too,rii,boo)
@@ -185,17 +184,17 @@ class ItemMemberinorder3(
 
         )
         // Line View
-        val lineViewwidth = 1 // Set line view height as desired
+        val lineViewwidth = Metrics.dpToPx(1) // Set line view height as desired
         lineView.measure(
-            MeasureSpec.makeMeasureSpec(lineViewwidth , MeasureSpec.EXACTLY),
-            MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY)
+            Measure.getExactSpec(lineViewwidth),
+            Measure.getExactSpec(Metrics.dpToPx(90))
         )
 
 
 
         lineView1.measure(
-            MeasureSpec.makeMeasureSpec(lineViewwidth , MeasureSpec.EXACTLY),
-            MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY)
+            Measure.getExactSpec(lineViewwidth),
+            Measure.getExactSpec(Metrics.dpToPx(90))
         )
 
         imageView2.measure(
@@ -220,6 +219,6 @@ class ItemMemberinorder3(
         // Do your custom measurement logic here if needed
 
         // IMPORTANT: You must call setMeasuredDimension to save the measured width and height
-        setMeasuredDimension(width, Metrics.dpToPx(105))
+        setMeasuredDimension(width, Metrics.dpToPx(135))
     }
 }

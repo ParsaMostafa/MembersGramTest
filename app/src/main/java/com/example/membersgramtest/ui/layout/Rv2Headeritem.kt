@@ -37,7 +37,7 @@ class Rv2Headeritem (
 
         // textview
         val l =  Metrics.dpToPx(16)
-        val t =  Metrics.dpToPx(8)
+        val t =  Metrics.dpToPx(31)
         val r = l + textView.measuredWidth
         val b = t+ textView.measuredHeight
         textView.layout(l, t, r, b)
@@ -56,14 +56,14 @@ class Rv2Headeritem (
 
         textView.measure(
             Measure.wrapContentSpec,
-            Measure.wrapContentSpec
+            Measure.getExactSpec(Metrics.dpToPx(19))
         )
 
 
 
 
 
-        setMeasuredDimension(Metrics.dpToPx(140), Measure.getExactSpec(45)+textView.measuredHeight)
+        setMeasuredDimension(width, Metrics.dpToPx(45)+textView.measuredHeight)
 
 
 

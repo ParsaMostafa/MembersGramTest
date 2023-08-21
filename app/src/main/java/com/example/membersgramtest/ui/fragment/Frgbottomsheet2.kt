@@ -6,20 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.membersgramtest.ui.layout.ItemMemberinorder2
+import com.example.membersgramtest.ui.layout.Rv2Bodyitem
 
-class member2 :  Fragment() {
+class Frgbottomsheet2 :  Fragment() {
 
-    lateinit var itemMemberinorder2: ItemMemberinorder2
+    lateinit var rv2Bodyitem: Rv2Bodyitem
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        itemMemberinorder2 = ItemMemberinorder2(requireContext())
-        return itemMemberinorder2
+        rv2Bodyitem = Rv2Bodyitem(requireContext())
+        return rv2Bodyitem
     }
 
 
@@ -27,7 +27,7 @@ class member2 :  Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        itemMemberinorder2.whtitebuttun.setOnClickListener {
+        rv2Bodyitem.button.setOnClickListener {
             val bottomSheetFragment = MyBottomSheetDialogFragment()
             bottomSheetFragment.show((context as AppCompatActivity).supportFragmentManager, bottomSheetFragment.tag)
         }

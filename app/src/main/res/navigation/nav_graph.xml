@@ -51,20 +51,16 @@
         android:name="com.example.membersgramtest.ui.fragment.FragmentStore"
         android:label="FragmentStore" >
         <action
-            android:id="@+id/action_fragmentStore_to_fragCoinDetails3"
-            app:destination="@id/fragCoinDetails3" />
-        <action
             android:id="@+id/action_fragmentStore_to_fragMeberDetails2"
             app:destination="@id/fragMeberDetails2" />
 
         <action
             android:id="@+id/action_fragmentStore_to_fragViewPagerTab3"
             app:destination="@id/fragViewPagerTab3" />
+        <action
+            android:id="@+id/action_fragmentStore_to_fragviewpagerCoin"
+            app:destination="@id/fragviewpagerCoin" />
     </fragment>
-    <fragment
-        android:id="@+id/fragCoinDetails3"
-        android:name="com.example.membersgramtest.ui.fragment.FragCoinDetails"
-        android:label="FragCoinDetails" />
     <fragment
         android:id="@+id/fragMeberDetails2"
         android:name="com.example.membersgramtest.ui.fragment.FragMeberDetails"
@@ -73,5 +69,9 @@
         android:id="@+id/fragViewPagerTab3"
         android:name="com.example.membersgramtest.ui.fragment.FragViewPagerTab"
         android:label="FragViewPagerTab" />
+    <fragment
+        android:id="@+id/fragviewpagerCoin"
+        android:name="com.example.membersgramtest.ui.fragment.FragviewpagerCoin"
+        android:label="FragviewpagerCoin" />
 
 </navigation>

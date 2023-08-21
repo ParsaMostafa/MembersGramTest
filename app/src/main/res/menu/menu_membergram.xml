@@ -5,7 +5,7 @@
         android:title="Order"/>
 
     <item
-        android:id="@+id/fragCoinDetails3"
+        android:id="@+id/fragviewpagerCoin"
         android:icon="@drawable/ic_get_coin_bottom_navigation_disable__1_"
         android:title="Coin"/>
 

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="margin_top">16dp</dimen>
+
+    <dimen name="margin_top">6dp</dimen>
+    <dimen name="corner_radius">60dp</dimen>
+    <dimen name="border_width">1dp</dimen>
+    <dimen name="button_padding">60dp</dimen>
+    <dimen name="pad_d">135dp</dimen>
 
 </resources>

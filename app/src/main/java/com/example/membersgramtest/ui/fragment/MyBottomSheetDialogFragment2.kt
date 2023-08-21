@@ -10,26 +10,26 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.membersgramtest.MyApp
 import com.example.membersgramtest.ui.layout.bottom_sheet_layout
+import com.example.membersgramtest.ui.layout.bottom_sheet_layout2
 import com.example.membersgramtest.utillity.CryptUtil
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.json.JSONObject
 
-
-class MyBottomSheetDialogFragment: BottomSheetDialogFragment() {
-    lateinit var bottomSheetLayout: bottom_sheet_layout
+class MyBottomSheetDialogFragment2 : BottomSheetDialogFragment() {
+    lateinit var bottomSheetLayout2: bottom_sheet_layout2
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        bottomSheetLayout = bottom_sheet_layout(requireContext())
-        return  bottomSheetLayout
+        bottomSheetLayout2 = bottom_sheet_layout2(requireContext())
+        return  bottomSheetLayout2
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bottomSheetLayout.button.setOnClickListener {
+        bottomSheetLayout2.button.setOnClickListener {
             Log.d("MyBottomSheetDialog", "Button clicked")
             orderMemberWithProvidedData("https://api.membersgram.com/api/v2/zarinpal/member/gateway?data=", MyApp.appContext)
         }
@@ -41,8 +41,8 @@ class MyBottomSheetDialogFragment: BottomSheetDialogFragment() {
 
         val jsonData = mapOf(
             "phonenumber" to "989373449122",
-            "sku" to "z_member_01_m", // bundle.sku
-            "price" to 5000,  // bundle.price
+            "sku" to "z_member_01_m",
+            "price" to 5000,
             "username" to "StopElon_BSC",
             "tgChannelId" to 1352448969,
             "title" to "STOPELON20OFFICIAL",
