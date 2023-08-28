@@ -25,7 +25,7 @@ class Rv2Headeritem (
     init {
         textView = TextView(context)
         textView.text = "Visit order"
-        textView.typeface = ResourcesCompat.getFont(context, R.font.product_sans_regular)
+        textView.typeface = ResourcesCompat.getFont(context, R.font.producsansmedium)
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
         textView.setTextColor(Color.parseColor("#212121"))
         addView(textView)
@@ -37,7 +37,7 @@ class Rv2Headeritem (
 
         // textview
         val l =  Metrics.dpToPx(16)
-        val t =  Metrics.dpToPx(31)
+        val t =  Metrics.dpToPx(28)
         val r = l + textView.measuredWidth
         val b = t+ textView.measuredHeight
         textView.layout(l, t, r, b)
@@ -56,14 +56,14 @@ class Rv2Headeritem (
 
         textView.measure(
             Measure.wrapContentSpec,
-            Measure.getExactSpec(Metrics.dpToPx(19))
+            Measure.getExactSpec(Metrics.dpToPx(21))
         )
 
 
 
 
 
-        setMeasuredDimension(width, Metrics.dpToPx(45)+textView.measuredHeight)
+        setMeasuredDimension(width, Metrics.dpToPx(47)+textView.measuredHeight)
 
 
 

@@ -9,7 +9,7 @@ data class DataX(
     val darsad: String,
     val date: String,
     val description: String,
-    val discount: Int,
+    val discount: Float,
     val discount_coin: Int,
     val discount_image: String,
     val disprice: Int,

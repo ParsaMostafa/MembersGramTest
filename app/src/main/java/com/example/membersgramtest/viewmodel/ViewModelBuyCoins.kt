@@ -4,115 +4,54 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.membersgramtest.api.RetrofitInstance
-import com.example.membersgramtest.models.getcoins.GetCoins
 import com.example.membersgramtest.models.getcoins.RVBuyCoin
-import com.example.membersgramtest.models.memberresponse.RV1Member
-import com.example.membersgramtest.models.memberresponse.RV2MEMBER
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class ViewModelBuyCoins : ViewModel() {
-    val Apicalls = RetrofitInstance.api
+    private val apicalls = RetrofitInstance.api
 
-    val _RVCoin = MutableStateFlow<List<RVBuyCoin>>(emptyList())
-    val RVCoin: StateFlow<List<RVBuyCoin>> = _RVCoin
-
-
-
+    val Items = MutableStateFlow<List<RVBuyCoin>>(emptyList())
 
     init {
         getHeaderItems()
-
     }
 
     private fun getHeaderItems() {
         viewModelScope.launch {
             try {
+                val response = apicalls.getCoins().body()?.data?.data
+                Log.d("ViewModelBuyCoinsR", "Body List: $response")
 
-                val response = Apicalls.getCoins()
-                Log.d("getCoins", "$response")
-                if (response.isSuccessful) {
-                    Log.d("getCoins1", "${response.body()}")
-                    headerResponse(response.body())
-                } else {
-                    Log.e("getCoins", "API call failed with code: ${response.code()}")
+                val headerList = response?.filter { it.type == "daily"  }
+                val bodyList = response?.filter { it.type == "normal" }
+
+                val Header = headerList?.map { RVBuyCoin.HeaderModel(it.Id, it.__v, it._id, it.background, it.coincount, it.darsad, it.date, it.description, it.discount, it.discount_coin, it.discount_image, it.disprice, it.hour, it.id, it.image, it.is_active, it.market, it.onvan, it.price, it.promotion_counter, it.remain_time, it.sku, it.title_image, it.type)}
+
+                val body = bodyList?.map { RVBuyCoin.BodyModel(it.Id, it.__v, it._id, it.background, it.coincount, it.darsad, it.date, it.description, it.discount, it.discount_coin, it.discount_image, it.disprice, it.hour, it.id, it.image, it.is_active, it.market, it.onvan, it.price, it.promotion_counter, it.remain_time, it.sku, it.title_image, it.type) }
+
+                Log.d("ViewModelBuyCoinsH", "Header List: $Header")
+                Log.d("ViewModelBuyCoinsB", "Body List: $body")
+
+
+                val combinedList = mutableListOf<RVBuyCoin>()
+                if (headerList != null) {
+                    if (Header != null) {
+                        combinedList.addAll(Header)
+                    }
                 }
+                combinedList.add(RVBuyCoin.Title("Normal package"))
+
+                if (bodyList != null) {
+                    if (body != null) {
+                        combinedList.addAll(body)
+                    }
+                }
+
+                Items.emit(combinedList)
             } catch (e: Exception) {
-                Log.e("getCoins", "Exception: ${e.message}")
+                // Handle the exception
             }
         }
     }
-
-    private fun headerResponse(body: GetCoins?) {
-        val RvHeader = mutableListOf<RVBuyCoin>()
-
-        body?.data?.data?.forEach {
-            RvHeader.add(
-                RVBuyCoin.HeaderModel(
-                    Id = it.Id,
-                    __v = it.__v,
-                    _id = it._id,
-                    background = it.background,
-                    coincount = it.coincount,
-                    darsad = it.darsad,
-                    date = it.date,
-                    description = it.description,
-                    discount = it.discount,
-                    discount_coin = it.discount_coin,
-                    discount_image = it.discount_image,
-                    disprice = it.disprice,
-                    hour = it.hour,
-                    id = it.id,
-                    image = it.image,
-                    is_active = it.is_active,
-                    market = it.market,
-                    onvan = it.onvan,
-                    price = it.price,
-                    promotion_counter = it.promotion_counter,
-                    remain_time = it.remain_time,
-                    sku = it.sku,
-                    title_image = it.title_image,
-                    type = it.type
-                )
-            )
-
-            // Add a title between HeaderModel and BodyModel
-            RvHeader.add(RVBuyCoin.Title("Normal Package"))
-
-            // You can also add BodyModel here
-            RvHeader.add(
-                RVBuyCoin.BodyModel(
-                    Id = it.Id,
-                    __v = it.__v,
-                    _id = it._id,
-                    background = it.background,
-                    coincount = it.coincount,
-                    darsad = it.darsad,
-                    date = it.date,
-                    description = it.description,
-                    discount = it.discount,
-                    discount_coin = it.discount_coin,
-                    discount_image = it.discount_image,
-                    disprice = it.disprice,
-                    hour = it.hour,
-                    id = it.id,
-                    image = it.image,
-                    is_active = it.is_active,
-                    market = it.market,
-                    onvan = it.onvan,
-                    price = it.price,
-                    promotion_counter = it.promotion_counter,
-                    remain_time = it.remain_time,
-                    sku = it.sku,
-                    title_image = it.title_image,
-                    type = it.type
-                )
-            )
-        }
-
-        _RVCoin.value = RvHeader
-    }
-
-
 }

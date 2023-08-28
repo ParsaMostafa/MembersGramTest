@@ -1,10 +1,11 @@
 package com.example.membersgramtest.adaptor
 
+
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.membersgramtest.ui.fragment.FragCoinBuy
 import com.example.membersgramtest.ui.fragment.FragCoinTransfer
-import com.example.membersgramtest.ui.fragment.FragStoreDetails
+
 
 class viewpagerCoinAdaptor(fragment: Fragment) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int = 2

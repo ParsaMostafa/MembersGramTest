@@ -46,6 +46,7 @@ class ItemBodyBuyCoin (
         button.typeface = ResourcesCompat.getFont(context, R.font.producsansmedium)
         button.insetTop = 0
         button.insetBottom = 0
+        button.letterSpacing = 0.0f
 
         // Set the corner radius for rounded corners
         val radius = context.resources.getDimensionPixelSize(R.dimen.corner_radius)
@@ -103,8 +104,8 @@ class ItemBodyBuyCoin (
         textCoin = TextView(context)
         textCoin.text = "200 Coins"
         textCoin.setTextColor(Color.parseColor("#212121"))
-        textCoin.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
-        textCoin.typeface = ResourcesCompat.getFont(context, R.font.product_sans_regular)
+        textCoin.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
+        textCoin.typeface = ResourcesCompat.getFont(context, R.font.producsansmedium)
         addView(textCoin)
 
 
@@ -122,7 +123,7 @@ class ItemBodyBuyCoin (
 
         // buttun
         val br = parentWidth - Metrics.dpToPx(16)
-        val bt = Metrics.dpToPx(18)
+        val bt = Metrics.dpToPx(20)
         val bl = br - button.measuredWidth
         val Bb = bt + button.measuredHeight
         button.layout(bl,bt,br,Bb)
@@ -130,7 +131,7 @@ class ItemBodyBuyCoin (
 
         // discount string
         val discountRight =  bl - Metrics.dpToPx(8)
-        val discountTop = Metrics.dpToPx(24)
+        val discountTop = Metrics.dpToPx(28)
         val discountLeft = discountRight - discountStringCoin.measuredWidth
         val discountBottom = discountTop + discountStringCoin.measuredHeight
         discountStringCoin.layout(discountLeft, discountTop, discountRight, discountBottom)
@@ -145,7 +146,7 @@ class ItemBodyBuyCoin (
 
         // textCoin
         val coinl = imgr + Metrics.dpToPx(8)
-        val coint = Metrics.dpToPx(27)
+        val coint = Metrics.dpToPx(30)
         val coinr = coinl + textCoin.measuredWidth
         val coinb = coint + textCoin.measuredHeight
         textCoin.layout(coinl,coint,coinr,coinb)
@@ -168,13 +169,13 @@ class ItemBodyBuyCoin (
         )
 
         discountStringCoin.measure(
-            Measure.getExactSpec(Metrics.dpToPx(30)),
-            Measure.getExactSpec(Metrics.dpToPx(24))
+            Measure.getExactSpec(135),
+            Measure.getExactSpec(45),
         )
 
         imageView.measure(
-            Measure.wrapContentSpec,
-            Measure.wrapContentSpec
+            Measure.getExactSpec(Metrics.dpToPx(56)),
+            Measure.getExactSpec(Metrics.dpToPx(56))
         )
         textCoin.measure(
             Measure.wrapContentSpec,
