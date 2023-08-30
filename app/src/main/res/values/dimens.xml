@@ -7,5 +7,7 @@
     <dimen name="border_width">1dp</dimen>
     <dimen name="button_padding">60dp</dimen>
     <dimen name="pad_d">135dp</dimen>
+    <dimen name="pad_s">300dp</dimen>
+    <dimen name="pad_a">600dp</dimen>
 
 </resources>
