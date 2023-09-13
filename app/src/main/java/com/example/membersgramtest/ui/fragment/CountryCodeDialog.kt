@@ -35,61 +35,61 @@ class CountryCodeDialog(
         countryListView = findViewById(R.id.countryListView)
 
         originalCountries = arrayOf(
-            Country("+20", "Egypt"),
-            Country("+27", "South Africa"),
-            Country("+30", "Greece"),
-            Country("+31", "Netherlands"),
-            Country("+32", "Belgium"),
-            Country("+33", "France"),
-            Country("+34", "Spain"),
-            Country("+36", "Hungary"),
-            Country("+39", "Italy"),
-            Country("+40", "Romania"),
-            Country("+41", "Switzerland"),
-            Country("+43", "Austria"),
-            Country("+44", "United Kingdom"),
-            Country("+45", "Denmark"),
-            Country("+46", "Sweden"),
-            Country("+47", "Norway"),
-            Country("+48", "Poland"),
-            Country("+49", "Germany"),
-            Country("+51", "Peru"),
-            Country("+52", "Mexico"),
-            Country("+53", "Cuba"),
-            Country("+54", "Argentina"),
-            Country("+55", "Brazil"),
-            Country("+56", "Chile"),
-            Country("+57", "Colombia"),
-            Country("+58", "Venezuela"),
-            Country("+60", "Malaysia"),
-            Country("+61", "Australia"),
-            Country("+62", "Indonesia"),
-            Country("+63", "Philippines"),
-            Country("+64", "New Zealand"),
-            Country("+65", "Singapore"),
-            Country("+66", "Thailand"),
-            Country("+81", "Japan"),
-            Country("+82", "South Korea"),
-            Country("+84", "Vietnam"),
-            Country("+86", "China"),
-            Country("+90", "Turkey"),
-            Country("+91", "India"),
-            Country("+92", "Pakistan"),
-            Country("+93", "Afghanistan"),
-            Country("+94", "Sri Lanka"),
-            Country("+95", "Myanmar"),
-            Country("+98", "Iran"),
-            Country("+212", "Morocco"),
-            Country("+213", "Algeria"),
-            Country("+234", "Nigeria"),
-            Country("+254", "Kenya"),
-            Country("+255", "Tanzania"),
-            Country("+256", "Uganda"),
-            Country("+260", "Zambia"),
-            Country("+263", "Zimbabwe"),
-            Country("+972", "Israel")
-
+            Country("20", "Egypt"),
+            Country("1", "UnitedStates"),
+            Country("27", "South Africa"),
+            Country("30", "Greece"),
+            Country("31", "Netherlands"),
+            Country("32", "Belgium"),
+            Country("33", "France"),
+            Country("34", "Spain"),
+            Country("36", "Hungary"),
+            Country("39", "Italy"),
+            Country("40", "Romania"),
+            Country("41", "Switzerland"),
+            Country("43", "Austria"),
+            Country("44", "United Kingdom"),
+            Country("45", "Denmark"),
+            Country("46", "Sweden"),
+            Country("47", "Norway"),
+            Country("48", "Poland"),
+            Country("49", "Germany"),
+            Country("51", "Peru"),
+            Country("52", "Mexico"),
+            Country("53", "Cuba"),
+            Country("54", "Argentina"),
+            Country("55", "Brazil"),
+            Country("56", "Chile"),
+            Country("57", "Colombia"),
+            Country("58", "Venezuela"),
+            Country("60", "Malaysia"),
+            Country("61", "Australia"),
+            Country("62", "Indonesia"),
+            Country("63", "Philippines"),
+            Country("64", "New Zealand"),
+            Country("65", "Singapore"),
+            Country("66", "Thailand"),
+            Country("81", "Japan"),
+            Country("82", "South Korea"),
+            Country("84", "Vietnam"),
+            Country("86", "China"),
+            Country("90", "Turkey"),
+            Country("91", "India"),
+            Country("92", "Pakistan"),
+            Country("93", "Afghanistan"),
+            Country("94", "Sri Lanka"),
+            Country("+98", "Iran"),  // کشور ایران
+            Country("212", "Morocco"),
+            Country("213", "Algeria"),
+            Country("234", "Nigeria"),
+            Country("254", "Kenya"),
+            Country("255", "Tanzania"),
+            Country("256", "Uganda"),
+            Country("260", "Zambia"),
+            Country("263", "Zimbabwe"),
+            Country("972", "Israel")
         )
+
 
         filteredCountries = originalCountries
 
@@ -121,6 +121,7 @@ class CountryCodeDialog(
             dismiss()
         }
 
+        // در داخل onCreate
         searchEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -129,6 +130,7 @@ class CountryCodeDialog(
             override fun afterTextChanged(s: Editable?) {}
         })
 
+
     }
 }
 
@@ -136,5 +138,14 @@ class CountryCodeDialog(
 data class Country(val countryCode: String, val countryName: String) {
     val formattedName: String
         get() = "$countryName ($countryCode)"
+
+    // اضافه کردن پیش‌شماره به متن جستجوی کشور
+    fun contains(query: CharSequence?): Boolean {
+        return query?.let { countryName.contains(it, true) } == true || query?.let {
+            countryCode.contains(
+                it, true)
+        } == true
+    }
 }
+
 

@@ -3,6 +3,8 @@ package com.example.membersgramtest.api
 import com.example.membersgramtest.models.ViewTabModel.Getview
 import com.example.membersgramtest.models.getcoins.GetCoins
 import com.example.membersgramtest.models.memberresponse.MemberResponse
+import com.example.membersgramtest.models.transferCoin.ResponseCoin
+import com.example.membersgramtest.models.transferCoin.TransferCoinRequest
 import com.example.membersgramtest.models.v1.MyRequest
 import com.example.membersgramtest.models.v1.MyResponse
 import com.example.membersgramtest.models.v2.VerifyRegisterRequest
@@ -34,5 +36,9 @@ interface ApiCalls {
 
     @POST("api/v2/getcoins")
     suspend fun getCoins() : Response<GetCoins>
+
+
+    @POST("api/v2/sendcoin")
+    suspend fun transferCoin(@Body request: TransferCoinRequest): Response<ResponseCoin>
 
 }

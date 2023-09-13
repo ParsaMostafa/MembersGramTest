@@ -26,7 +26,7 @@ class CountryAdapter(context: Context, private val countries: List<Country>) : B
         filteredCountries = if (constraint.isNullOrEmpty()) {
             countries
         } else {
-            countries.filter { it.countryName.contains(constraint, true) }
+            countries.filter { it.contains(constraint) }
         }
         notifyDataSetChanged()
     }

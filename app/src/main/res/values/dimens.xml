@@ -9,5 +9,8 @@
     <dimen name="pad_d">135dp</dimen>
     <dimen name="pad_s">300dp</dimen>
     <dimen name="pad_a">600dp</dimen>
+    <!-- res/values/dimens.xml -->
+    <dimen name="custom_error_text_size">12sp</dimen> <!-- Adjust the textSize as needed -->
+
 
 </resources>

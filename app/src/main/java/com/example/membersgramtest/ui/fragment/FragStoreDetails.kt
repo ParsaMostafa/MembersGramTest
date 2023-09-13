@@ -15,6 +15,7 @@ import com.example.membersgramtest.R
 import com.example.membersgramtest.adaptor.AdaptorRv2member
 import com.example.membersgramtest.adaptor.Rv1MemberAdaptorclass
 import com.example.membersgramtest.models.memberresponse.RV1Member
+import com.example.membersgramtest.viewmodel.TransferViewModel
 import com.example.membersgramtest.viewmodel.ViewModelMember
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -23,6 +24,7 @@ class FragStoreDetails: Fragment() {
 
 
     private val viewModel: ViewModelMember by viewModels()
+    val viewModel2: TransferViewModel by viewModels()
     private lateinit var rv1: RecyclerView
     private lateinit var rv1Adapter: Rv1MemberAdaptorclass
     private lateinit var rv2: RecyclerView
@@ -36,6 +38,9 @@ class FragStoreDetails: Fragment() {
     ): View {
         return inflater.inflate(R.layout.rvs_member, container, false)
     }
+
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -118,6 +123,7 @@ class FragStoreDetails: Fragment() {
             }
         }
     }
+
 }
 
 
