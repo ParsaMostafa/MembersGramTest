@@ -7,19 +7,27 @@
 
     </style>
 
-    <style name="OutlinedBoxStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <!-- Add any additional styling here -->
-    </style>
-
     <style name="TextInputLayoutOutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <!-- Other attributes for your TextInputLayout style -->
 
         <!-- Add errorTextAppearance attribute with custom text appearance style -->
-        <item name="errorTextAppearance">@style/CustomErrorTextAppearance</item>
+
     </style>
 
+    <style name="CustomErrorAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/textlightblue</item>
+        <item name="fontFamily">@font/product_sans_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+
+
+
+
     <!-- Define a custom text appearance style for the error message -->
-    <style name="CustomErrorTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
+    <style name="Appearance" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@android:color/holo_green_dark</item>
         <item name="android:textSize">1sp</item> <!-- Adjust the textSize as needed -->
         <!-- You can also customize other attributes like textColor, etc. here -->
     </style>

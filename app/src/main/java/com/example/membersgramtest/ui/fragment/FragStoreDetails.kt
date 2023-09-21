@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,8 +23,9 @@ import kotlinx.coroutines.launch
 class FragStoreDetails: Fragment() {
 
 
-    private val viewModel: ViewModelMember by viewModels()
-    val viewModel2: TransferViewModel by viewModels()
+    private val viewModel: ViewModelMember by activityViewModels()
+    val viewModel2: TransferViewModel by activityViewModels()
+
     private lateinit var rv1: RecyclerView
     private lateinit var rv1Adapter: Rv1MemberAdaptorclass
     private lateinit var rv2: RecyclerView
@@ -63,7 +64,7 @@ class FragStoreDetails: Fragment() {
                 Log.d("FragStorerv2", "RV2Items content: $it")
                 loadingProgressBar.visibility = View.VISIBLE
 
-                delay(3000)
+               // delay(1000)
 
                 rv2Adapter.submitList(it)
                 loadingProgressBar.visibility = View.GONE

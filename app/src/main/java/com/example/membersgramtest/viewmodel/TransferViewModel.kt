@@ -14,6 +14,7 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
@@ -27,6 +28,7 @@ class TransferViewModel : ViewModel() {
 
     private val phoneNumber = preferencesHelper.phoneNumber
     lateinit var bundle: Bundle
+    var showbottomsheet : Boolean = false
 
     // Inside TransferViewModel
     val loadingState = MutableStateFlow(false)
@@ -41,6 +43,15 @@ class TransferViewModel : ViewModel() {
 
     // Inside TransferViewModel
     val bottomSheetVisibleState = MutableSharedFlow<Boolean>()
+
+
+    var phoneNumber222: String = ""
+    var coinNumber222:String = ""
+
+
+
+
+
 
     data class ButtonState(
         val isEnabled: Boolean,
@@ -60,14 +71,35 @@ class TransferViewModel : ViewModel() {
 
     init {
         Log.d("TransferViewModel", "ViewModel created")
-        if (phoneNumber != null) {
-            Log.d("TransferViewModel", phoneNumber)
+
+        viewModelScope.launch {
+            errorFlowCoinNumber.collect{
+                Log.d("Transfer", "SSSS: $it")
+
+            }
         }
+
+
+
+
+
     }
 
     override fun onCleared() {
         super.onCleared()
         Log.d("TransferViewModel", "ViewModel Destroyed")
+    }
+
+    fun setPhoneNumber(phoneNumber: String) = viewModelScope.launch {
+        // phoneNumberFlow.emit(phoneNumber)
+        phoneNumber222 = phoneNumber
+        Log.d("TransferViewModel", phoneNumber)
+    }
+
+    fun setCoinNumber(coinNumber: String) = viewModelScope.launch{
+
+        coinNumber222 = coinNumber
+        Log.d("TransferViewModel", coinNumber)
     }
 
 
@@ -77,17 +109,23 @@ class TransferViewModel : ViewModel() {
         Log.d("TransferViewModel", "Coin: $coinCount")
 
         // Check coin count constraints
+
+
         if (coinCount < 10) {
+            Log.d("TransferViewModel", "coin<10 ran")
             errorFlowCoinNumber.emit("You can't transfer under 10 coins")
         } else if (coinCount > 500) {
+            Log.d("TransferViewModel", "coin>500 ran")
             errorFlowCoinNumber.emit("You can't transfer more than 500 coins")
         } else {
+            Log.d("TransferViewModel", "transferCoin(fullPhoneNumber, coinCount)")
             transferCoin(fullPhoneNumber, coinCount)
         }
     }
 
     fun setButtonStateToLoading() {
-        Log.d("ButtonClick", "تابع handleButtonClick() فراخوانی شد")
+
+        Log.d("TransferViewModel", "setButtonStateToLoading()")
 
         // Update loading state
         loadingState.value = true
@@ -99,7 +137,10 @@ class TransferViewModel : ViewModel() {
         startTimer(60)
     }
 
-    fun transferCoin(phoneNumber: String, coin: Int) {
+    fun transferCoin (phoneNumber: String, coin: Int) {
+
+        Log.d("TransferViewModel", "transferCoin")
+
         viewModelScope.launch {
             try {
                 val request = TransferCoinRequest(TransferCoinRequest.Data(
@@ -113,30 +154,36 @@ class TransferViewModel : ViewModel() {
                 val preferencesHelper = PreferencesHelper
                 val number = preferencesHelper.phoneNumber
 
-                if (tr.data != null &&
-                    phoneNumber != number &&
-                    isValidPhoneNumber(phoneNumber) &&
-                    coin.toInt() >= 10 &&
-                    coin.toInt() <= 500
-                ) {
-                    Log.d("TransferViewModel", "run the condition")
-
-
-                    setButtonStateToLoading()
-
-                } else if (tr.data == null) {
-                    Log.d("API1", "Number doesn't exist")
-                    val preferencesHelper = PreferencesHelper
-                    val number = preferencesHelper.phoneNumber
-                    if (phoneNumber != number && isValidPhoneNumber(phoneNumber)) {
-                        errorFlowPhoneNumber.emit("Number Doesn't Exist!!")
-                        Log.d("API1", "Number doesn't exist")
+                when {
+                    tr.data != null &&
+                            phoneNumber != number &&
+                            isValidPhoneNumber(phoneNumber) &&
+                            coin.toInt() >= 10 &&
+                            coin.toInt() <= 500 -> {
+                        Log.d("TransferViewModel", " bottomSheetVisibleState.emit(true)")
+                         bottomSheetVisibleState.emit(true)
+                         setButtonStateToLoading()
+                            Log.d("TransferViewModel", "run the condition")
+                            // Add your code here for the first condition
                     }
-                    if (!isValidPhoneNumber(phoneNumber)) {
-                        errorFlowPhoneNumber.emit("Invalid Number heh heh!!")
-                    }
-                    if (phoneNumber == number) {
-                        errorFlowPhoneNumber.emit("You Can't Transfer to your account")
+                    tr.data == null -> {
+
+                        if (phoneNumber != number && isValidPhoneNumber(phoneNumber)) {
+
+                            errorFlowPhoneNumber.emit("Number Doesn't Exist!!")
+                            bottomSheetVisibleState.emit(false)
+                            Log.d("TransferViewModel", "Number doesn't exist")
+                        }
+                        if (!isValidPhoneNumber(phoneNumber)) {
+                            Log.d("TransferViewModel", "isValidPhoneNumber : Invalid Number heh heh!!")
+                            errorFlowPhoneNumber.emit("Invalid Number heh heh!!")
+                            bottomSheetVisibleState.emit(false)
+                        }
+                        if (phoneNumber == number) {
+                            Log.d("TransferViewModel", "You Can't Transfer to your account ran ")
+                            errorFlowPhoneNumber.emit("You Can't Transfer to your account")
+                            bottomSheetVisibleState.emit(false)
+                        }
                     }
                 }
 
@@ -149,7 +196,13 @@ class TransferViewModel : ViewModel() {
     }
 
     fun isValidPhoneNumber(phoneNumber: String): Boolean {
-        val sanitizedPhoneNumber = phoneNumber.replace("+", "")
+        // Remove any leading '+' character and whitespace
+        val sanitizedPhoneNumber = phoneNumber.trimStart('+')
+
+        // Check if the sanitized phone number has at least 10 characters
+        if (sanitizedPhoneNumber.length < 10) {
+            return false
+        }
 
         try {
             val numberProto = phoneNumberUtil.parse("+$sanitizedPhoneNumber", null)
@@ -157,13 +210,15 @@ class TransferViewModel : ViewModel() {
             Log.d("TransferViewModel", "Input: $phoneNumber, Sanitized: $sanitizedPhoneNumber, isValid: $isValid")
             return isValid
         } catch (e: Exception) {
-            Log.e("TransferViewModel", "Error: ${e.message}")
+            Log.e("TransferViewModel", "Error Validation: ${e.message}")
             return false
         }
     }
 
+
     // Inside TransferViewModel
     fun updateButtonState(phoneNumberEditText: String, phoneNumberRest: String, coin: String) {
+        Log.e("TransferViewModel", "updateButtonState")
         val isAnyFieldEmpty = phoneNumberEditText.isEmpty() || phoneNumberRest.isEmpty() || coin.isEmpty()
         val buttonState = if (isAnyFieldEmpty) {
             ButtonState(false, Color.parseColor("#E0E0E0"), Color.parseColor("#616161"))
@@ -175,6 +230,7 @@ class TransferViewModel : ViewModel() {
 
     // Function to start the timer
     fun startTimer(duration: Long) = viewModelScope.launch {
+        Log.e("TransferViewModel", "startTimer")
         viewModelScope.launch {
             for (secondsRemaining in duration downTo 0) {
                 // Update timer state

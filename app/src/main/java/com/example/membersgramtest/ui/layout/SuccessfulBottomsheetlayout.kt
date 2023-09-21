@@ -41,15 +41,15 @@ class SuccessfulBottomsheetlayout(
 
         textview1 = TextView(context)
         textview1.text = "Successful transfer"
-        textview1.textSize = 18F
+        textview1.textSize = 20F
         textview1.setTextColor(Color.parseColor("#212121"))// Set text color to black
-        textview1.typeface = ResourcesCompat.getFont(context, R.font.product_sans_regular)
+        textview1.typeface = ResourcesCompat.getFont(context, R.font.producsansmedium)
         addView(textview1)
 
         textview2 = TextView(context)
         textview2.text = "200 coins transfer to $phoneNumberText" // استفاده از phoneNumberText
         textview2.textSize = 14F
-        textview2.setTextColor(Color.parseColor("#616161"))// Set text color to black
+        textview2.setTextColor(Color.parseColor("#212121"))// Set text color to black
         textview2.typeface = ResourcesCompat.getFont(context, R.font.product_sans_regular)
         addView(textview2)
 
@@ -109,7 +109,7 @@ class SuccessfulBottomsheetlayout(
         textview1.layout(lefttext, toptext, righttext, bottomtext)
 
         //textview2
-        val leftt = Metrics.dpToPx(108)
+        val leftt = Metrics.dpToPx(125)
         val topt = bottomtext + Metrics.dpToPx(8)
         val rightt = leftt + textview2.measuredWidth
         val bottomt = topt + textview2.measuredHeight
@@ -117,7 +117,7 @@ class SuccessfulBottomsheetlayout(
 
         // button
         val leftb = (parentWidth - button.measuredWidth) / 2
-        val topb = bottomt + Metrics.dpToPx(54)
+        val topb = bottomt + Metrics.dpToPx(45)
         val rightb = leftb + button.measuredWidth
         val bottomb = topb + button.measuredHeight
         button.layout(leftb, topb, rightb, bottomb)
