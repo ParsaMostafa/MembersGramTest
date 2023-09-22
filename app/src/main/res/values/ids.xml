@@ -5,5 +5,9 @@
     <item name="textView2" type="id" />
     <item name="imageView1" type="id" />
     <item name="iv" type="id" />
+    <item name="transferCoinPhoneEditText" type="id" />
+    <item name="transferCoinCountryEditText" type="id" />
+    <item name="transferCoinNumberOfCoinEditText" type="id" />
+    <item name="transferCoinButton" type="id" />
 
 </resources>

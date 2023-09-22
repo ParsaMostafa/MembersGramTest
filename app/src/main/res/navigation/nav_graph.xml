@@ -73,5 +73,38 @@
         android:id="@+id/fragviewpagerCoin"
         android:name="com.example.membersgramtest.ui.fragment.FragviewpagerCoin"
         android:label="FragviewpagerCoin" />
+    <dialog
+        android:id="@+id/successfultransferBottomsheet"
+        android:name="com.example.membersgramtest.ui.fragment.SuccessfultransferBottomsheet"
+        android:label="SuccessfultransferBottomsheet">
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+
+        <!-- Define the coin argument -->
+        <argument
+            android:name="coin"
+            app:argType="string" />
+    </dialog>
+
+    <fragment
+        android:id="@+id/fragCoinTransfer"
+        android:name="com.example.membersgramtest.ui.fragment.FragmentTransferCoin"
+        android:label="FragCoinTransfer">
+
+        <!-- Define the phoneNumber argument inside com.example.membersgramtest.ui.fragment.FragCoinTransfer -->
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+
+        <!-- Define the coin argument -->
+        <argument
+            android:name="coin"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_fragCoinTransfer_to_successfultransferBottomsheet"
+            app:destination="@id/successfultransferBottomsheet" />
+    </fragment>
 
 </navigation>

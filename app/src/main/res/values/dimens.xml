@@ -4,8 +4,14 @@
 
     <dimen name="margin_top">6dp</dimen>
     <dimen name="corner_radius">60dp</dimen>
+    <dimen name="corner_radiusR">4dp</dimen>
     <dimen name="border_width">1dp</dimen>
-    <dimen name="button_padding">60dp</dimen>
+    <dimen name="button_padding">65dp</dimen>
     <dimen name="pad_d">135dp</dimen>
+    <dimen name="pad_s">300dp</dimen>
+    <dimen name="pad_a">600dp</dimen>
+    <!-- res/values/dimens.xml -->
+    <dimen name="custom_error_text_size">12sp</dimen> <!-- Adjust the textSize as needed -->
+
 
 </resources>
