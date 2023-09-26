@@ -130,7 +130,7 @@ class MyMemberBodyModelLayout (
 
         // textViewPayment
         val textpaymentLeft = Metrics.dpToPx(72)
-        val textpaymentTop = paymentTop + Metrics.dpToPx(4)
+        val textpaymentTop = paymentTop + Metrics.dpToPx(3)
         val textpaymentRight = textpaymentLeft + textViewPayment.measuredWidth
         val textpaymentBottom = textpaymentTop + textViewPayment.measuredHeight
         textViewPayment.layout(textpaymentLeft, textpaymentTop, textpaymentRight, textpaymentBottom)
@@ -149,7 +149,7 @@ class MyMemberBodyModelLayout (
 
         // suport
         val supporttextleft = Metrics.dpToPx(72)
-        val supporttexttop = textpaymentBottom + Metrics.dpToPx(39)
+        val supporttexttop = textpaymentBottom + Metrics.dpToPx(38)
         val supporttextRight = supporttextleft + textViewsuporrt.measuredWidth
         val supporttextBottom = supporttexttop + textViewsuporrt.measuredHeight
         textViewsuporrt.layout(supporttextleft, supporttexttop, supporttextRight, supporttextBottom)
@@ -164,7 +164,7 @@ class MyMemberBodyModelLayout (
 
         // settings Text
         val stextleft = Metrics.dpToPx(72)
-        val stexttop =  imageviewsupportBottom  + Metrics.dpToPx(35)
+        val stexttop =  imageviewsupportBottom  + Metrics.dpToPx(36)
         val stextRight = stextleft + textSettings.measuredWidth
         val stextBottom = stexttop + textSettings.measuredHeight
         textSettings.layout(stextleft, stexttop, stextRight, stextBottom)
@@ -172,7 +172,7 @@ class MyMemberBodyModelLayout (
 
         // Line View
         val lineLeft = l
-        val lineTop = Metrics.dpToPx(170)
+        val lineTop = settingsBottom + Metrics.dpToPx(24)
         val lineRight = r
         val lineHeight = 1 // Set line height as desired
         val lineBottom = lineTop + lineHeight
@@ -187,7 +187,7 @@ class MyMemberBodyModelLayout (
 
         // logout Text
         val logouttextleft = Metrics.dpToPx(72)
-        val logouttexttop =  lineBottom  + Metrics.dpToPx(26)
+        val logouttexttop =  lineBottom  + Metrics.dpToPx(27)
         val logouttextRight = logouttextleft + textlogout.measuredWidth
         val logouttextBottom = logouttexttop + textlogout.measuredHeight
         textlogout.layout(logouttextleft, logouttexttop, logouttextRight, logouttextBottom)
@@ -248,7 +248,7 @@ class MyMemberBodyModelLayout (
 
             setMeasuredDimension(
                 width,
-                Metrics.dpToPx(230)
+                Metrics.dpToPx(420)
             )
         }
     }

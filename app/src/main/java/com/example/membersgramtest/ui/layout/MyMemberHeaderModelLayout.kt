@@ -74,8 +74,8 @@ class MyMemberHeaderModelLayout(
         clientName.layout(textLeft, textTop, textRight, textBottom)
 
         // Number
-        val numLeft = Metrics.dpToPx(158)
-        val numTop = Metrics.dpToPx(150)
+        val numLeft = Metrics.dpToPx(150)
+        val numTop = Metrics.dpToPx(158)
         val numRight = numLeft + numberclient.measuredWidth
         val numBottom = numTop + numberclient.measuredHeight
         numberclient.layout(numLeft, numTop, numRight, numBottom)
@@ -109,7 +109,7 @@ class MyMemberHeaderModelLayout(
 
         setMeasuredDimension(
             width,
-           Metrics.dpToPx(215)
+           Metrics.dpToPx(235)
         )
     }
 

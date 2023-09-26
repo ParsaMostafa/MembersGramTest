@@ -1,13 +1,10 @@
 package com.example.membersgramtest.ui.layout
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.content.res.ResourcesCompat
 import com.example.membersgramtest.R
 import com.example.membersgramtest.utillity.Measure
 import com.example.membersgramtest.utillity.Metrics
