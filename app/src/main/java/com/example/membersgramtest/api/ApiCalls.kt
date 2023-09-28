@@ -1,5 +1,6 @@
 package com.example.membersgramtest.api
 
+import com.example.membersgramtest.models.Transaction.TransactionResponse
 import com.example.membersgramtest.models.ViewTabModel.Getview
 import com.example.membersgramtest.models.getcoins.GetCoins
 import com.example.membersgramtest.models.memberresponse.MemberResponse
@@ -40,5 +41,14 @@ interface ApiCalls {
 
     @POST("api/v2/sendcoin")
     suspend fun transferCoin(@Body request: TransferCoinRequest): Response<ResponseCoin>
+
+    @POST("api/v2_1/getUserTransActions")
+    suspend fun UserTransActions() : Response<TransactionResponse>
+
+
+
+
+
+
 
 }

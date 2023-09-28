@@ -27,9 +27,28 @@ class MyMemberViewmodel : ViewModel() {
         MyMemberModelItems.add(
             MyMemberModel.MyMemberBodyModel(
                 R.drawable.payment_black_24dp, "Payments",
-                R.drawable.ic_support, "Support",
+                false
+//                R.drawable.ic_support, "Support",
+//                R.drawable.settings_24px, "Settings",
+//                R.drawable.logout_black_24dp, "Log out"
+            )
+        )
+        MyMemberModelItems.add(
+            MyMemberModel.MyMemberBodyModel(
+            R.drawable.ic_support, "Support",
+                false
+            )
+        )
+        MyMemberModelItems.add(
+            MyMemberModel.MyMemberBodyModel(
                 R.drawable.settings_24px, "Settings",
-                R.drawable.logout_black_24dp, "Log out"
+                false
+            )
+        )
+        MyMemberModelItems.add(
+            MyMemberModel.MyMemberBodyModel(
+                R.drawable.logout_black_24dp, "Log out",
+                true
             )
         )
 

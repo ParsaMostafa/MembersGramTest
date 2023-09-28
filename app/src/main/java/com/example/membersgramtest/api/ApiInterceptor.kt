@@ -58,6 +58,7 @@ class ApiInterceptor : Interceptor {
         val responseBody = response.peekBody(Long.MAX_VALUE)
         var responseString = responseBody.string()
 
+
         var decrypted = false
         try {
             responseString = CryptUtil.decrypt(responseString)
@@ -82,5 +83,6 @@ class ApiInterceptor : Interceptor {
         }
 
         return response
+
     }
 }

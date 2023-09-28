@@ -46,33 +46,23 @@ class AdaptorMyMembers : ListAdapter<MyMemberModel, RecyclerView.ViewHolder>(Ada
         RecyclerView.ViewHolder(myMemberBodyModelLayout) {
 
 
+        init {
+            myMemberBodyModelLayout.setBackgroundResource(R.drawable.selector_item_background)
+            myMemberBodyModelLayout.isClickable = true // Enable click events
+        }
+
         fun bind(  header: MyMemberModel.MyMemberBodyModel  ) {
             // Update your header view based on the model
             Glide.with(MyApp.appContext)
-                .load(header.icon1)
+                .load(header.icon)
                 .placeholder(R.drawable.person_bue_24dp__2_) // Placeholder image resource
                 .error(R.drawable.icons8_globe_showing_europe_africa_1) // Error image resource
                 .into(myMemberBodyModelLayout.imageViewPayment)
 
 
 
-            myMemberBodyModelLayout.textViewPayment.text = header.title1
-
-
-            // Update your header view based on the model
-            Glide.with(MyApp.appContext)
-                .load(header.icon2)
-                .placeholder(R.drawable.person_bue_24dp__2_) // Placeholder image resource
-                .error(R.drawable.icons8_globe_showing_europe_africa_1) // Error image resource
-                .into(myMemberBodyModelLayout.imageViewsuport)
-
-
-
-            myMemberBodyModelLayout.textViewsuporrt.text = header.title2
-
-
-
-
+            myMemberBodyModelLayout.textViewPayment.text = header.title
+            myMemberBodyModelLayout.showDivider = header.showdivider
 
 
 

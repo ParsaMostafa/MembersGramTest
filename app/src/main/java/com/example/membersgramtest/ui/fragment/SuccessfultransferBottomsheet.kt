@@ -30,6 +30,7 @@ class SuccessfultransferBottomsheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         // Now you can safely access successfulBottomsheetlayout
         successfulBottomsheetlayout.button.setOnClickListener {
             // Your button click logic here

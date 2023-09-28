@@ -8,12 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.example.membersgramtest.R
 import com.example.membersgramtest.adaptor.viewpagerCoinAdaptor
 import com.example.membersgramtest.ui.layout.Viwepagercionlayout
-import com.example.membersgramtest.viewmodel.MyRepository
-import com.example.membersgramtest.viewmodel.TransferViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 
 class FragviewpagerCoin : Fragment() {

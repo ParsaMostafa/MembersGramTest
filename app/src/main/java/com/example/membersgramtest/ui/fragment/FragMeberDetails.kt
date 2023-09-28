@@ -2,6 +2,7 @@ package com.example.membersgramtest.ui.fragment
 
 import MyMemberViewmodel
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,6 +40,7 @@ class FragMeberDetails:  Fragment() {
         // Observe the data from the view model
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.TabMyMemberList.collect { memberList ->
+                Log.d("CyberWolf" , memberList.toString())
                 // Update the UI with the new data
                 adapter.submitList(memberList)
             }
