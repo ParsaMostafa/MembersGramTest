@@ -15,7 +15,10 @@ class ViewModelBuyCoins : ViewModel() {
 
     init {
         getHeaderItems()
+
+
     }
+
 
     private fun getHeaderItems() {
         viewModelScope.launch {

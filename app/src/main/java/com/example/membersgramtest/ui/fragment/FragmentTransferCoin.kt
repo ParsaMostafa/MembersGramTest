@@ -19,7 +19,6 @@ import com.example.membersgramtest.R
 import com.example.membersgramtest.sharedPerf.PreferencesHelper
 import com.example.membersgramtest.ui.layout.CoinTransferLayout
 import com.example.membersgramtest.viewmodel.TransferViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButton
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import kotlinx.coroutines.flow.collectLatest

@@ -1,30 +1,14 @@
 package com.example.membersgramtest.ui.layout
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Typeface
-import android.text.InputType
 import android.util.AttributeSet
-import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.appcompat.view.ContextThemeWrapper
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.membersgramtest.R
-import com.example.membersgramtest.utillity.Measure
-import com.example.membersgramtest.utillity.Metrics
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.shape.CornerFamily
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 
-class FragMenberslayout ( context: Context,
-                          attrs: AttributeSet? = null,
-                          defStyleAttr: Int = 0
+class FragmentMyMemberLayOut (context: Context,
+                              attrs: AttributeSet? = null,
+                              defStyleAttr: Int = 0
 ) : ViewGroup(context, attrs, defStyleAttr) {
 
     val recyclerViewMyMembers : RecyclerView
@@ -39,8 +23,6 @@ class FragMenberslayout ( context: Context,
 
         recyclerViewMyMembers = RecyclerView(context)
         addView(recyclerViewMyMembers)
-
-
 
     }
 

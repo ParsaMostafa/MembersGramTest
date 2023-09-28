@@ -10,7 +10,7 @@
         android:title="Coin"/>
 
     <item
-        android:id="@+id/fragMeberDetails2"
+        android:id="@+id/myMemberFragment"
         android:icon="@drawable/path_8828"
         android:title="My Members"/>
 </menu>

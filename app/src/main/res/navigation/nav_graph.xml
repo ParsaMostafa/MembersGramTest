@@ -50,9 +50,6 @@
         android:id="@+id/fragmentStore"
         android:name="com.example.membersgramtest.ui.fragment.FragmentStore"
         android:label="FragmentStore" >
-        <action
-            android:id="@+id/action_fragmentStore_to_fragMeberDetails2"
-            app:destination="@id/fragMeberDetails2" />
 
         <action
             android:id="@+id/action_fragmentStore_to_fragViewPagerTab3"
@@ -60,11 +57,10 @@
         <action
             android:id="@+id/action_fragmentStore_to_fragviewpagerCoin"
             app:destination="@id/fragviewpagerCoin" />
+        <action
+            android:id="@+id/action_fragmentStore_to_myMemberFragment"
+            app:destination="@id/myMemberFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/fragMeberDetails2"
-        android:name="com.example.membersgramtest.ui.fragment.FragMeberDetails"
-        android:label="FragMeberDetails" />
     <fragment
         android:id="@+id/fragViewPagerTab3"
         android:name="com.example.membersgramtest.ui.fragment.FragViewPagerTab"
@@ -106,5 +102,19 @@
             android:id="@+id/action_fragCoinTransfer_to_successfultransferBottomsheet"
             app:destination="@id/successfultransferBottomsheet" />
     </fragment>
+    <fragment
+        android:id="@+id/myMemberFragment"
+        android:name="com.example.membersgramtest.MyMemberFragment"
+        android:label="fragment_my_member"
+        tools:layout="@layout/fragment_my_member" >
+        <action
+            android:id="@+id/action_myMemberFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.membersgramtest.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" />
 
 </navigation>

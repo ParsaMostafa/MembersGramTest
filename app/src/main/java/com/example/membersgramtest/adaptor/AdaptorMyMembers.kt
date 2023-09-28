@@ -1,6 +1,9 @@
 package com.example.membersgramtest.adaptor
 
+import android.util.Log
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +20,7 @@ const val  mymemHeader_viewtype = 0
 const val  mymemBody_viewtype = 1
 const val  mymemfooter_viewtype = 2
 class AdaptorMyMembers : ListAdapter<MyMemberModel, RecyclerView.ViewHolder>(AdaptorMyMembers.MyDiffCallback()){
+   lateinit var onItemClick: (MyMemberModel) -> Unit
 
 
     inner class MyMemberHeaderViewHolder(val myMemberHeaderModelLayout: MyMemberHeaderModelLayout) :
@@ -42,42 +46,32 @@ class AdaptorMyMembers : ListAdapter<MyMemberModel, RecyclerView.ViewHolder>(Ada
     }
 
 
-    inner class MyMemberBodyModelViewHolder( val myMemberBodyModelLayout: MyMemberBodyModelLayout) :
+    inner class MyMemberBodyModelViewHolder(val myMemberBodyModelLayout: MyMemberBodyModelLayout) :
         RecyclerView.ViewHolder(myMemberBodyModelLayout) {
 
-
-        fun bind(  header: MyMemberModel.MyMemberBodyModel  ) {
-            // Update your header view based on the model
-            Glide.with(MyApp.appContext)
-                .load(header.icon1)
-                .placeholder(R.drawable.person_bue_24dp__2_) // Placeholder image resource
-                .error(R.drawable.icons8_globe_showing_europe_africa_1) // Error image resource
-                .into(myMemberBodyModelLayout.imageViewPayment)
-
-
-
-            myMemberBodyModelLayout.textViewPayment.text = header.title1
-
-
-            // Update your header view based on the model
-            Glide.with(MyApp.appContext)
-                .load(header.icon2)
-                .placeholder(R.drawable.person_bue_24dp__2_) // Placeholder image resource
-                .error(R.drawable.icons8_globe_showing_europe_africa_1) // Error image resource
-                .into(myMemberBodyModelLayout.imageViewsuport)
-
-
-
-            myMemberBodyModelLayout.textViewsuporrt.text = header.title2
-
-
-
-
-
-
+        init {
+            myMemberBodyModelLayout.setBackgroundResource(R.drawable.selector_item_background)
+            myMemberBodyModelLayout.isClickable = true // Enable click events
 
         }
+
+        fun bind(header: MyMemberModel.MyMemberBodyModel) {
+            // Update your header view based on the model
+            Glide.with(MyApp.appContext)
+                .load(header.icon)
+                .placeholder(R.drawable.person_bue_24dp__2_)
+                .error(R.drawable.icons8_globe_showing_europe_africa_1)
+                .into(myMemberBodyModelLayout.imageViewPayment)
+
+            myMemberBodyModelLayout.textViewPayment.text = header.title
+            myMemberBodyModelLayout.showDivider = header.showdivider
+            itemView.setOnClickListener {
+                Log.d("Cyberwolf", "seton clicklistener clicked")
+                onItemClick(getItem(absoluteAdapterPosition))
+            }
+        }
     }
+
 
     inner class MyMemberFooterModelViewHolder( val memberFooterModelLayout: MyMemberFooterModelLayout ) :
         RecyclerView.ViewHolder(memberFooterModelLayout) {
