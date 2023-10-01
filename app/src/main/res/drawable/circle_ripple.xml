@@ -1,0 +1,5 @@
+<!-- res/drawable/rounded_frame_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF" /> <!-- Background color (you can change this) -->
+    <corners android:radius="350dp" /> <!-- Half of the desired width/height to make it circular -->
+</shape>

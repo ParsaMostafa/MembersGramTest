@@ -108,13 +108,14 @@
         android:label="fragment_my_member"
         tools:layout="@layout/fragment_my_member" >
         <action
-            android:id="@+id/action_myMemberFragment_to_paymentFragment"
-            app:destination="@id/paymentFragment" />
+            android:id="@+id/action_myMemberFragment_to_myMemberItemsFragment"
+            app:destination="@id/myMemberItemsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/paymentFragment"
-        android:name="com.example.membersgramtest.PaymentFragment"
-        android:label="fragment_payment"
-        tools:layout="@layout/fragment_payment" />
+        android:id="@+id/myMemberItemsFragment"
+        android:name="com.example.membersgramtest.MyMemberItemsFragment"
+        android:label="fragment_my_member_items"
+        tools:layout="@layout/fragment_my_member_items" />
+
 
 </navigation>

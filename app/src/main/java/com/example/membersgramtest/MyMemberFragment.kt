@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
@@ -45,9 +46,11 @@ class MyMemberFragment :  Fragment() {
                     // بر اساس selectedItem.title یا هر مشخصه دیگری می‌توانید ناوبری را انجام دهید
                     when (selectedItem.title) {
                         "Payments" -> {
-                            // انجام ناوبری مرتبط با Payments
-                            // مثال:
-                            Navigation.findNavController(view).navigate(R.id.paymentFragment)
+                            val paymentFragment = PaymentFragment() // Create an instance of PaymentFragment
+                            val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
+                            transaction.replace(R.id.fragmentContainerViewmymember, paymentFragment) // Replace the current fragment with PaymentFragment
+                            transaction.addToBackStack(null) // Add the transaction to the back stack
+                            transaction.commit() // Commit the transaction
                         }
                         "Support" -> {
                             // انجام ناوبری مرتبط با Support
