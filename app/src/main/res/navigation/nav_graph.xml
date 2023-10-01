@@ -49,26 +49,7 @@
     <fragment
         android:id="@+id/fragmentStore"
         android:name="com.example.membersgramtest.ui.fragment.FragmentStore"
-        android:label="FragmentStore" >
-
-        <action
-            android:id="@+id/action_fragmentStore_to_fragViewPagerTab3"
-            app:destination="@id/fragViewPagerTab3" />
-        <action
-            android:id="@+id/action_fragmentStore_to_fragviewpagerCoin"
-            app:destination="@id/fragviewpagerCoin" />
-        <action
-            android:id="@+id/action_fragmentStore_to_myMemberFragment"
-            app:destination="@id/myMemberFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/fragViewPagerTab3"
-        android:name="com.example.membersgramtest.ui.fragment.FragViewPagerTab"
-        android:label="FragViewPagerTab" />
-    <fragment
-        android:id="@+id/fragviewpagerCoin"
-        android:name="com.example.membersgramtest.ui.fragment.FragviewpagerCoin"
-        android:label="FragviewpagerCoin" />
+        android:label="FragmentStore" />
     <dialog
         android:id="@+id/successfultransferBottomsheet"
         android:name="com.example.membersgramtest.ui.fragment.SuccessfultransferBottomsheet"
@@ -103,19 +84,9 @@
             app:destination="@id/successfultransferBottomsheet" />
     </fragment>
     <fragment
-        android:id="@+id/myMemberFragment"
-        android:name="com.example.membersgramtest.MyMemberFragment"
-        android:label="fragment_my_member"
-        tools:layout="@layout/fragment_my_member" >
-        <action
-            android:id="@+id/action_myMemberFragment_to_myMemberItemsFragment"
-            app:destination="@id/myMemberItemsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/myMemberItemsFragment"
-        android:name="com.example.membersgramtest.MyMemberItemsFragment"
-        android:label="fragment_my_member_items"
-        tools:layout="@layout/fragment_my_member_items" />
+        android:id="@+id/paymentFragment2"
+        android:name="com.example.membersgramtest.PaymentFragment"
+        android:label="PaymentFragment" />
 
 
 </navigation>

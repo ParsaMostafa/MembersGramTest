@@ -1,22 +1,18 @@
 package com.example.membersgramtest.ui.fragment
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.example.membersgramtest.R
 import com.example.membersgramtest.adaptor.ViewPagerFragmentAdapter
 import com.example.membersgramtest.ui.layout.FragViewPagerTablayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-class FragViewPagerTab: Fragment() {
+class FragViewPagerTabOrder: Fragment() {
 
     lateinit var fragViewPagerTablayout: FragViewPagerTablayout
     override fun onCreateView(

@@ -8,8 +8,4 @@
         android:id="@+id/myMemberFragment"
         android:name="com.example.membersgramtest.MyMemberFragment"
         android:label="MyMemberFragment" />
-    <fragment
-        android:id="@+id/paymentFragment"
-        android:name="com.example.membersgramtest.PaymentFragment"
-        android:label="PaymentFragment" />
 </navigation>

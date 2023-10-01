@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.membersgramtest.adaptor.AdaptorMyMembers
 import com.example.membersgramtest.models.MyMemberModel.MyMemberModel
@@ -44,23 +45,25 @@ class MyMemberFragment :  Fragment() {
             when (selectedItem) {
                 is MyMemberModel.MyMemberBodyModel -> {
                     // بر اساس selectedItem.title یا هر مشخصه دیگری می‌توانید ناوبری را انجام دهید
+
                     when (selectedItem.title) {
                         "Payments" -> {
-                            val paymentFragment = PaymentFragment() // Create an instance of PaymentFragment
-                            val transaction: FragmentTransaction = requireFragmentManager().beginTransaction()
-                            transaction.replace(R.id.fragmentContainerViewmymember, paymentFragment) // Replace the current fragment with PaymentFragment
-                            transaction.addToBackStack(null) // Add the transaction to the back stack
-                            transaction.commit() // Commit the transaction
+                            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                            transaction.replace(R.id.nav_host_fragment, PaymentFragment())
+                            transaction.addToBackStack(null) // Add to back stack
+                            transaction.commit()
+
                         }
                         "Support" -> {
                             // انجام ناوبری مرتبط با Support
                             // مثال:
                           //  Navigation.findNavController(view).navigate(R.id.supportFragment)
                         }
-                        // ...
+
                     }
                 }
                 // اگر نیاز به انجام عملیاتی برای دیگر آیتم‌ها دارید، مشابها برای آن‌ها نیز عمل کنید.
+
                 else -> {}
             }
         }

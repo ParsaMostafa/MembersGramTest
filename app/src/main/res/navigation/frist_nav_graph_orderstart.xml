@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/frist_nav_graph_orderstart"
+    app:startDestination="@id/fragViewPagerTabOrder">
+
+    <fragment
+        android:id="@+id/fragViewPagerTabOrder"
+        android:name="com.example.membersgramtest.ui.fragment.FragViewPagerTabOrder"
+        android:label="FragViewPagerTabOrder" />
+    <fragment
+        android:id="@+id/fragviewpagerCoin"
+        android:name="com.example.membersgramtest.ui.fragment.FragviewpagerCoin"
+        android:label="FragviewpagerCoin" />
+    <fragment
+        android:id="@+id/myMemberFragment2"
+        android:name="com.example.membersgramtest.MyMemberFragment"
+        android:label="MyMemberFragment" >
+        <action
+            android:id="@+id/action_myMemberFragment2_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.membersgramtest.PaymentFragment"
+        android:label="PaymentFragment" />
+</navigation>
