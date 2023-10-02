@@ -4,46 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-
-    <!-- Wrap the ImageView in a FrameLayout to apply the ripple effect -->
-    <FrameLayout
-        android:id="@+id/imageFrameLayout"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:clickable="true"
-        android:background="@drawable/circle_ripple"
+    android:layout_height="match_parent">
 
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:foreground="?android:attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_actionbar_back" />
-    </FrameLayout>
-
-    <!-- Rest of your layout remains unchanged -->
-    <TextView
-        android:id="@+id/paymentTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Payments"
-        android:textSize="20sp"
-        android:textColor="#212121"
-        android:fontFamily="@font/producsansmedium"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="65dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#FFFFFF"
+        app:title="Payments"
+        app:titleTextColor="#212121"
+        app:navigationIcon="@drawable/ic_actionbar_back"
+        app:navigationContentDescription="Back"
+        tools:ignore="MissingConstraints" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView1"
@@ -52,7 +25,7 @@
         android:paddingStart="16dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/paymentTitle"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

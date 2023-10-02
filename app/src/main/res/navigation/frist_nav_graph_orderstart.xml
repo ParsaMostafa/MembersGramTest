@@ -14,7 +14,7 @@
         android:label="FragviewpagerCoin" />
     <fragment
         android:id="@+id/myMemberFragment2"
-        android:name="com.example.membersgramtest.MyMemberFragment"
+        android:name="com.example.membersgramtest.ui.fragment.MyMemberFragment"
         android:label="MyMemberFragment" >
         <action
             android:id="@+id/action_myMemberFragment2_to_paymentFragment"
@@ -22,6 +22,10 @@
     </fragment>
     <fragment
         android:id="@+id/paymentFragment"
-        android:name="com.example.membersgramtest.PaymentFragment"
-        android:label="PaymentFragment" />
+        android:name="com.example.membersgramtest.ui.fragment.PaymentFragment"
+        android:label="PaymentFragment" >
+        <action
+            android:id="@+id/action_paymentFragment_to_myMemberFragment2"
+            app:destination="@id/myMemberFragment2" />
+    </fragment>
 </navigation>

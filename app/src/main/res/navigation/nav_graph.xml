@@ -85,8 +85,16 @@
     </fragment>
     <fragment
         android:id="@+id/paymentFragment2"
-        android:name="com.example.membersgramtest.PaymentFragment"
-        android:label="PaymentFragment" />
+        android:name="com.example.membersgramtest.ui.fragment.PaymentFragment"
+        android:label="PaymentFragment" >
+        <action
+            android:id="@+id/action_paymentFragment2_to_myMemberFragment"
+            app:destination="@id/myMemberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myMemberFragment"
+        android:name="com.example.membersgramtest.ui.fragment.MyMemberFragment"
+        android:label="MyMemberFragment" />
 
 
 </navigation>

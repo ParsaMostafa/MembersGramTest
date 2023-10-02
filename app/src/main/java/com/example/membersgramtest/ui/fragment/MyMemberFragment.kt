@@ -1,4 +1,4 @@
-package com.example.membersgramtest
+package com.example.membersgramtest.ui.fragment
 import MyMemberViewmodel
 import android.os.Bundle
 import android.util.Log
@@ -6,12 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.membersgramtest.R
 import com.example.membersgramtest.adaptor.AdaptorMyMembers
 import com.example.membersgramtest.models.MyMemberModel.MyMemberModel
 import com.example.membersgramtest.ui.layout.FragmentMyMemberLayOut
@@ -48,16 +46,17 @@ class MyMemberFragment :  Fragment() {
 
                     when (selectedItem.title) {
                         "Payments" -> {
+
                             val transaction = requireActivity().supportFragmentManager.beginTransaction()
                             transaction.replace(R.id.nav_host_fragment, PaymentFragment())
-                            transaction.addToBackStack(null) // Add to back stack
+                            transaction.addToBackStack("MyMemberFragment" ) // Add to back stack
                             transaction.commit()
 
                         }
                         "Support" -> {
                             // انجام ناوبری مرتبط با Support
                             // مثال:
-                          //  Navigation.findNavController(view).navigate(R.id.supportFragment)
+                            //  Navigation.findNavController(view).navigate(R.id.supportFragment)
                         }
 
                     }
