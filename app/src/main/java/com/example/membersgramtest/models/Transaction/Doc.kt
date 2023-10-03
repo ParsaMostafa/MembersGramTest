@@ -11,7 +11,7 @@ data class Doc(
     val member_count: Int,
     val pay_member: Boolean,
     val pay_view: Boolean,
-    val price: Int,
+    val price: Float,
     val purchaseState: String,
     val time: String,
     val token: String

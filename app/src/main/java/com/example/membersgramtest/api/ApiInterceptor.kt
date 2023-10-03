@@ -14,7 +14,7 @@ class ApiInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val requestBuilder = chain.request().newBuilder()
-        val apiToken = PreferencesHelper.apiToken
+        val apiToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjNWI5MjY0MDZiZWJmMTk1ZGRkY2Y2NSIsImlhdCI6MTY5NDA3NzYwMn0.zK76IzG9DH6VAQTj96ZQ_2q4ykEq2oikXNzqG_TUaT0"
         Log.d("API T", "token is : $apiToken")
 
         if (apiToken != null) {
