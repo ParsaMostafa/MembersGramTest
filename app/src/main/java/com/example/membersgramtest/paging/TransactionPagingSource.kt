@@ -1,4 +1,5 @@
 package com.example.membersgramtest.paging
+
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -8,28 +9,27 @@ import retrofit2.HttpException
 import java.io.IOException
 
 class TransactionPagingSource(
-    private val api: ApiCalls
+    private val api: ApiCalls,
+    private val status: String
 ) : PagingSource<Int, Doc>() {
 
     override fun getRefreshKey(state: PagingState<Int, Doc>): Int? {
-
-        // پیاده سازی در صورت نیاز
-
+        // You can implement this if needed
         return null
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Doc> {
-        val pageNumber = params.key ?: 1
+        val currentPage = params.key ?: 1
 
         try {
-            val response = api.UserTransActions()
+            val response = api.UserTransActions(currentPage, status)
             if (response.isSuccessful) {
                 val data = response.body()?.data?.data?.docs ?: emptyList()
-                Log.d("CyberPaging" , data.toString())
+                Log.d("Paging", "class TransactionPagingSource: ${data.toString()}")
                 return LoadResult.Page(
                     data = data,
-                    prevKey = if (pageNumber == 1) null else pageNumber - 1,
-                    nextKey = if (data.isEmpty()) null else pageNumber + 1
+                    prevKey = if (currentPage == 1) null else currentPage - 1,
+                    nextKey = if (data.isEmpty()) null else currentPage + 1
                 )
             } else {
                 return LoadResult.Error(Exception("خطا در بارگیری داده"))

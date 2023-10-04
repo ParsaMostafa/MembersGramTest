@@ -4,14 +4,12 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Filter
 import android.widget.ListView
-import androidx.appcompat.app.AlertDialog
 import com.example.membersgramtest.R
+import com.example.membersgramtest.adaptor.CountryAdapter
 
 class CountryCodeDialog(
     context: Context,

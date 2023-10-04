@@ -7,11 +7,15 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.membersgramtest.api.RetrofitInstance
+import com.example.membersgramtest.models.Transaction.ChipsModel
 import com.example.membersgramtest.models.Transaction.Doc
 import com.example.membersgramtest.models.Transaction.TransactionResponse
 import com.example.membersgramtest.paging.TransactionPagingSource
+import com.example.membersgramtest.utillity.Consts.DEFAULT_QUERY
+import com.example.membersgramtest.utillity.Consts.MEMBER_QUERY
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 
 class ViewModelPayment : ViewModel () {
@@ -25,19 +29,19 @@ class ViewModelPayment : ViewModel () {
 
     init {
 
-        testLogTransaction()
+       testLogTransaction()
     }
 
     private fun testLogTransaction() {
         viewModelScope.launch {
             try {
-                val response = api.UserTransActions().body()?.data?.data
-                Log.d("CyberWolfl490" , response.toString())
+                val response = api.UserTransActions(1 , MEMBER_QUERY ).body()?.data?.data?.pages
+                Log.d("Mostafa" , response.toString())
 
                 // Update the LiveData with the response data
-//                transactionResponse.emit(response)
+              // transactionResponse.emit(response)
             } catch (e: Exception) {
-                Log.e("CyberWolfl490", "", e )
+                Log.e("Mostafa", "", e )
                 // Handle any exceptions or errors here
 
             }
@@ -45,20 +49,47 @@ class ViewModelPayment : ViewModel () {
     }
 
 
+
+
     //PagingTransaction
 
 
 
-    fun getTransactionResponseFlow(): Flow<PagingData<Doc>> {
+    object QueryConstants {
+        const val DEFAULT_QUERY = "all"
+        const val MEMBER_QUERY = "member"
+        const val COIN_QUERY = "coin"
+        const val VIEW_QUERY = "view"
+    }
+
+    val FlowChipsList = MutableStateFlow(
+        listOf(
+            ChipsModel(QueryConstants.DEFAULT_QUERY),
+            ChipsModel(QueryConstants.MEMBER_QUERY),
+            ChipsModel(QueryConstants.COIN_QUERY),
+            ChipsModel(QueryConstants.VIEW_QUERY)
+        )
+    )
+
+
+
+    val flowCurrentQuarry = MutableStateFlow(DEFAULT_QUERY)
+
+    val list = flowCurrentQuarry.flatMapLatest { query ->
         val pagingConfig = PagingConfig(
             pageSize = 20,
             prefetchDistance = 1,
             enablePlaceholders = false
         )
 
-        return Pager(
+        Pager(
             config = pagingConfig,
-            pagingSourceFactory = { TransactionPagingSource(api) }
+            pagingSourceFactory = { TransactionPagingSource(api, query) }
         ).flow
     }
+
+
+
+
+
 }

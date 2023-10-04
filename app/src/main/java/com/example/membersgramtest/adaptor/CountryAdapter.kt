@@ -1,4 +1,4 @@
-package com.example.membersgramtest.ui.fragment
+package com.example.membersgramtest.adaptor
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.example.membersgramtest.ui.fragment.Country
 
 class CountryAdapter(context: Context, private val countries: List<Country>) : BaseAdapter() {
     private val inflater = LayoutInflater.from(context)

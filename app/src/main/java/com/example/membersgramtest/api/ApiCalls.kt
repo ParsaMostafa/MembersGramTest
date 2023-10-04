@@ -14,6 +14,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface ApiCalls {
 
@@ -42,10 +43,14 @@ interface ApiCalls {
     @POST("api/v2/sendcoin")
     suspend fun transferCoin(@Body request: TransferCoinRequest): Response<ResponseCoin>
 
+
+
+
     @POST("api/v2_1/getUserTransActions")
-    suspend fun UserTransActions() : Response<TransactionResponse>
-
-
+    suspend fun UserTransActions(
+        @Query("page") pageNumber: Int,
+        @Query("filter") status: String
+    ): Response<TransactionResponse>
 
 
 

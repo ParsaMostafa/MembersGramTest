@@ -14,5 +14,6 @@ data class Doc(
     val price: Float,
     val purchaseState: String,
     val time: String,
-    val token: String
+    val token: String,
+
 )
